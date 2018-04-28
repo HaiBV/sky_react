@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Grid, Row, Col, Button} from 'react-bootstrap';
+import {Grid} from 'react-bootstrap';
 import Header from 'components/Header';
+import Player from 'containers/Player/Player';
+import playerService from 'services/player.service';
 import './scoreboard.css';
 
 class Scoreboard extends Component {
@@ -10,36 +12,11 @@ class Scoreboard extends Component {
             <div className="scoreboard">
                 <Grid>
                     <Header title={this.props.title}/>
-                    <Row>
-                        <Col md={8} className="player-name">
-                            Jim Hoskins
-                        </Col>
-                        <Col md={4} className="player-score">
-                            <Button className="counter-action decrement">-</Button>
-                            <span className="counter-score"> 31 </span>
-                            <Button className="counter-action increment">+</Button>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={8} className="player-name">
-                            Andrew Chalkley
-                        </Col>
-                        <Col md={4} className="player-score">
-                            <Button className="counter-action decrement">-</Button>
-                            <span className="counter-score"> 35 </span>
-                            <Button className="counter-action increment">+</Button>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={8} className="player-name">
-                            Alena Holligan
-                        </Col>
-                        <Col md={4} className="player-score">
-                            <Button className="counter-action decrement">-</Button>
-                            <span className="counter-score"> 42 </span>
-                            <Button className="counter-action increment">+</Button>
-                        </Col>
-                    </Row>
+                    <div className="players">
+                        {playerService.getPlayers().map(function (player) {
+                            return <Player name={player.name} score={player.score}/>
+                        })}
+                    </div>
                 </Grid>
             </div>
         );
