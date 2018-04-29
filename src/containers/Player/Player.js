@@ -11,7 +11,7 @@ class Player extends Component {
                     {this.props.name}
                 </Col>
                 <Col md={4} className="player-score">
-                    <Counter score={this.props.score}/>
+                    <Counter score={this.props.score} onChange={this.props.onScoreChange}/>
                 </Col>
             </Row>
         );
@@ -21,6 +21,7 @@ class Player extends Component {
 Player.propTypes = {
     name: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
+    onScoreChange: PropTypes.func.isRequired,
 };
 
 Player.defaultProps = {
