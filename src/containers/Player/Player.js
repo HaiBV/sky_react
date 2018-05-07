@@ -8,6 +8,7 @@ class Player extends Component {
         return (
             <Row>
                 <Col md={8} className="player-name">
+                    <a className="remove-player" onClick={this.props.handleRemove}>X</a>
                     {this.props.name}
                 </Col>
                 <Col md={4} className="player-score">
@@ -22,6 +23,7 @@ Player.propTypes = {
     name: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
     onScoreChange: PropTypes.func.isRequired,
+    handleRemove: PropTypes.func.isRequired,
 };
 
 Player.defaultProps = {
