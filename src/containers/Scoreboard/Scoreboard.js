@@ -20,9 +20,10 @@ class Scoreboard extends Component {
     onScoreChange(index, delta) {
         this.setState(update(this.state, {
             players: {
-                $apply: function (_players) {
-                    _players[index].score += delta;
-                    return _players;
+                [index] : {
+                    score: {
+                        $set: this.state.players[index].score + delta,
+                    }
                 }
             }
         }));

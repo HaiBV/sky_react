@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Row, Col} from 'react-bootstrap';
+import StopWatch from "./StopWatch";
 
 class Header extends Component {
     render() {
@@ -22,10 +23,13 @@ class Header extends Component {
                         </tbody>
                     </table>
                 </Col>
-                <Col md={8}>
+                <Col md={6}>
                     <div className="header">
                         <h2>{this.props.title}</h2>
                     </div>
+                </Col>
+                <Col md={2}>
+                    <StopWatch/>
                 </Col>
             </Row>
         );
