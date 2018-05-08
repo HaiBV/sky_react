@@ -52,7 +52,7 @@ class Scoreboard extends Component {
     render() {
         return (
             <div className="scoreboard">
-                <Grid>
+                <Grid fluid={true}>
                     <Header title={this.props.title} players={this.state.players}/>
                     <div className="players">
                         {this.state.players.map(function (player, index) {
