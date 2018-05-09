@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Row, Col} from 'react-bootstrap';
+import {Row, Col, Button} from 'react-bootstrap';
 import Counter from 'components/Counter';
 
 class Player extends Component {
@@ -8,7 +8,7 @@ class Player extends Component {
         return (
             <Row>
                 <Col md={8} className="player-name">
-                    <a className="remove-player" onClick={this.props.handleRemove}>X</a>
+                    <Button className="remove-player" onClick={this.props.handleRemove}>X</Button>
                     {this.props.name}
                 </Col>
                 <Col md={4} className="player-score">

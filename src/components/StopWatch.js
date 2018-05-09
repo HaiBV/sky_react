@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import update from 'react-addons-update';
 import {Button} from "react-bootstrap";
 
 class StopWatch extends Component {
@@ -48,10 +47,13 @@ class StopWatch extends Component {
     render() {
         return (
             <div className="stopwatch">
-                <h2>Stopwatch</h2>
-                <div className="stopwatch-time">{Math.floor(this.state.elapsedTime / 1000)}</div>
-                <Button onClick={this.handleStartStop.bind(this)}>{this.state.running ? 'Stop' : 'Start'}</Button>
-                <Button onClick={this.handleReset.bind(this)}>Reset</Button>
+                <h4>Stopwatch</h4>
+                <span className="stopwatch-time">{Math.floor(this.state.elapsedTime / 1000)}</span>
+                <div>
+                    <Button className="btn-info"
+                            onClick={this.handleStartStop.bind(this)}>{this.state.running ? 'Stop' : 'Start'}</Button>
+                    <Button className="btn-info" onClick={this.handleReset.bind(this)}>Reset</Button>
+                </div>
             </div>
         );
     }

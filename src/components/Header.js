@@ -8,27 +8,27 @@ class Header extends Component {
         const totalPlayers = this.props.players.length;
         const totalScore = this.props.players.reduce((_total, _player) => _total + _player.score, 0);
         return (
-            <Row>
-                <Col md={4}>
+            <Row className='header'>
+                <Col md={3}>
                     <table>
                         <tbody>
                         <tr>
-                            <td>Players:</td>
-                            <td>{totalPlayers}</td>
+                            <td className="title">Players:</td>
+                            <td className="value">{totalPlayers}</td>
                         </tr>
                         <tr>
-                            <td>Total Score:</td>
-                            <td>{totalScore}</td>
+                            <td className="title">Total Score:</td>
+                            <td className="value">{totalScore}</td>
                         </tr>
                         </tbody>
                     </table>
                 </Col>
-                <Col md={6}>
+                <Col md={5}>
                     <div className="header">
                         <h2>{this.props.title}</h2>
                     </div>
                 </Col>
-                <Col md={2}>
+                <Col md={4}>
                     <StopWatch/>
                 </Col>
             </Row>
