@@ -1,0 +1,9 @@
+.application-navigation .container {
+    width: auto;
+}
+
+.application-navigation ul li a.active,
+.application-navigation ul li a.focus {
+    background-color: dodgerblue;
+    color: white;
+}
