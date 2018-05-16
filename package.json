@@ -20,5 +20,6 @@
   },
   "devDependencies": {
     "cross-env": "^5.1.4"
-  }
+  },
+  "homepage": "https://HaiBV.github.io/sky_react/"
 }
