@@ -2,8 +2,9 @@
     width: auto;
 }
 
-.application-navigation ul li a.active,
-.application-navigation ul li a.focus {
+.application-navigation.navbar-default .navbar-nav > .active > a,
+.application-navigation.navbar-default .navbar-nav > .active > a:focus,
+.application-navigation.navbar-default .navbar-nav > .active > a:hover {
     background-color: dodgerblue;
     color: white;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import './navigation.css';
 
 class Navigation extends Component {
@@ -15,27 +15,21 @@ class Navigation extends Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav pullRight>
-                        <NavItem eventKey={1} href="/">
-                            Home
-                        </NavItem>
-                        <NavItem eventKey={2} href="/about">
-                            About
-                        </NavItem>
-                        {/*<li role="presentation">*/}
-                            {/*<NavLink exact to="/" role="button">Home</NavLink>*/}
-                        {/*</li>*/}
-                        {/*<li role="presentation">*/}
-                            {/*<NavLink to="/about" role="button">About</NavLink>*/}
-                        {/*</li>*/}
-                        {/*<li role="presentation">*/}
-                            {/*<NavLink to="/teachers" role="button">Teachers</NavLink>*/}
-                        {/*</li>*/}
-                        {/*<li role="presentation">*/}
-                            {/*<NavLink to="/courses" role="button">Courses</NavLink>*/}
-                        {/*</li>*/}
-                        {/*<li role="presentation">*/}
-                            {/*<NavLink to="/scoreboard" role="button">Scoreboard</NavLink>*/}
-                        {/*</li>*/}
+                        <LinkContainer exact to="/">
+                            <NavItem eventKey={1}>Home</NavItem>
+                        </LinkContainer>
+                        <LinkContainer to="/about">
+                            <NavItem eventKey={2}>About</NavItem>
+                        </LinkContainer>
+                        <LinkContainer to="/teachers">
+                            <NavItem eventKey={3}>Teachers</NavItem>
+                        </LinkContainer>
+                        <LinkContainer to="/courses">
+                            <NavItem eventKey={4}>Courses</NavItem>
+                        </LinkContainer>
+                        <LinkContainer to="/scoreboard">
+                            <NavItem eventKey={5}>Scoreboard</NavItem>
+                        </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

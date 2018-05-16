@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Route, Redirect } from 'react-router-dom';
-import HTML from './HTML';
-import CSS from './CSS';
-import Javascript from './JavaScript';
+import { HTMLCourses, CSSCourses, JavascriptCourses } from 'data/Courses';
+import CourseContainer from './CourseContainer';
 
 class Courses extends Component {
     render() {
@@ -11,14 +10,14 @@ class Courses extends Component {
             <div>
                 <h3>Courses</h3>
                 <ul className="course-nav">
-                    <li><NavLink to="/courses/html">HTML</NavLink></li>
-                    <li><NavLink to="/courses/css">CSS</NavLink></li>
-                    <li><NavLink to="/courses/javascript">Javascript</NavLink></li>
+                    <li><NavLink to={`${this.props.match.url}/html`}>HTML</NavLink></li>
+                    <li><NavLink to={`${this.props.match.url}/css`}>CSS</NavLink></li>
+                    <li><NavLink to={`${this.props.match.url}/javascript`}>Javascript</NavLink></li>
                 </ul>
-                <Route exact path="/courses" render={() => <Redirect to="/courses/html"/>}/>
-                <Route path="/courses/html" component={HTML}/>
-                <Route path="/courses/css" component={CSS}/>
-                <Route path="/courses/javascript" component={Javascript}/>
+                <Route exact path={this.props.match.path} render={() => <Redirect to={`${this.props.match.path}/html`}/>}/>
+                <Route path={`${this.props.match.path}/html`} render={() => <CourseContainer data={HTMLCourses}/>} />
+                <Route path={`${this.props.match.path}/css`} render={() => <CourseContainer data={CSSCourses}/>} />
+                <Route path={`${this.props.match.path}/javascript`} render={() => <CourseContainer data={JavascriptCourses}/>} />
             </div>
         );
     }
