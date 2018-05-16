@@ -1,0 +1,10 @@
+.application-navigation .container {
+    width: auto;
+}
+
+.application-navigation.navbar-default .navbar-nav > .active > a,
+.application-navigation.navbar-default .navbar-nav > .active > a:focus,
+.application-navigation.navbar-default .navbar-nav > .active > a:hover {
+    background-color: dodgerblue;
+    color: white;
+}
