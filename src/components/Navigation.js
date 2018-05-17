@@ -30,6 +30,9 @@ class Navigation extends Component {
                         <LinkContainer to="/scoreboard">
                             <NavItem eventKey={5}>Scoreboard</NavItem>
                         </LinkContainer>
+                        <LinkContainer to="/gif-search">
+                            <NavItem eventKey={6}>Gif Search</NavItem>
+                        </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
