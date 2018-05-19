@@ -10,6 +10,7 @@ import Navigation from 'components/Navigation';
 import Scoreboard from 'containers/Scoreboard/Scoreboard';
 import NotFound from 'components/NotFound';
 import Featured from "components/Featured";
+import GifSearch from "components/GifSearch";
 
 class App extends Component {
     render() {
@@ -32,6 +33,7 @@ class App extends Component {
                             <Route path="/teachers/:topic/:teacher" component={Featured}/>
                             <Route path="/courses" component={Courses}/>
                             <Route path="/scoreboard" component={Scoreboard}/>
+                            <Route path="/gif-search" component={GifSearch}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </div>
