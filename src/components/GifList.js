@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import Gif from "./Gif";
 
 class GifList extends Component {
     render() {
+        console.log(this.props.data);
         return (
-            <div>Lorem ip sum</div>
+            this.props.data.map(gif => <Gif url={gif.images.fixed_height.url} key={gif.id}/>)
         );
     }
 }

@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import SearchForm from 'components/SearchForm';
 import GifList from 'components/GifList';
+import axios from 'axios';
+import {Row} from "react-bootstrap";
 
 class GifSearch extends Component {
     constructor(props) {
@@ -11,15 +13,26 @@ class GifSearch extends Component {
         };
     }
 
-    componentDidMount() {
-        fetch();
+    handleSearch(query) {
+        axios.get('http://api.giphy.com/v1/gifs/search',
+            {
+                params: {
+                    api_key: 'umtYywUvKjQRgnWObFG1ewOT5nlfOFLI',
+                    q: query,
+                    limit: 24,
+                }
+            })
+            .then(response => this.setState({gifs: response.data.data}))
+            .catch(error => console.log('error is', error));
     }
 
     render() {
         return (
             <div className="gif-search">
-                <SearchForm />
-                <GifList />
+                <SearchForm onSearch={this.handleSearch.bind(this)}/>
+                <Row>
+                    <GifList data={this.state.gifs}/>
+                </Row>
             </div>
         );
     }
