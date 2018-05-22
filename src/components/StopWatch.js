@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Button} from "react-bootstrap";
 
-class StopWatch extends Component {
+export default class StopWatch extends Component {
     constructor(props) {
         super(props);
 
@@ -58,5 +58,3 @@ class StopWatch extends Component {
         );
     }
 }
-
-export default StopWatch;

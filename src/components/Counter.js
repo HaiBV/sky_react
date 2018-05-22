@@ -6,19 +6,18 @@ class Counter extends Component {
     render() {
         return (
             <div>
-                <Button className="counter-action decrement btn-success" onClick={function () {this.props.onChange(-1)}.bind(this)}>-</Button>
+                <Button className="counter-action decrement btn-success" onClick={() => {this.props.updatePlayerScore(this.props.index, -1)}}>-</Button>
                 <span className="counter-score"> {this.props.score} </span>
-                <Button className="counter-action increment btn-danger" onClick={function () {this.props.onChange(1)}.bind(this)}>+</Button>
+                <Button className="counter-action increment btn-danger" onClick={() => {this.props.updatePlayerScore(this.props.index, 1)}}>+</Button>
             </div>
         );
     }
 }
 
 Counter.propTypes = {
+    index: PropTypes.number.isRequired,
     score: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired,
+    updatePlayerScore: PropTypes.func.isRequired,
 };
-
-Counter.defaultProps = {};
 
 export default Counter;
