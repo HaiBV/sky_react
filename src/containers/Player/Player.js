@@ -10,6 +10,7 @@ export default class Player extends Component {
         score: PropTypes.number.isRequired,
         updatePlayerScore: PropTypes.func.isRequired,
         removePlayer: PropTypes.func.isRequired,
+        selectPlayer: PropTypes.func.isRequired,
     };
 
     render() {
@@ -17,7 +18,7 @@ export default class Player extends Component {
             <Row>
                 <Col md={8} xs={8} className="player-name">
                     <Button className="remove-player" onClick={() => this.props.removePlayer(this.props.index)}>X</Button>
-                    {this.props.name}
+                    <div className="select-player" onClick={() => this.props.selectPlayer(this.props.index)}>{this.props.name}</div>
                 </Col>
                 <Col md={4} xs={4} className="player-score">
                     <Counter index={this.props.index} score={this.props.score} updatePlayerScore={this.props.updatePlayerScore}/>

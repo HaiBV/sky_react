@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import update from 'react-addons-update';
 import { Grid } from 'react-bootstrap';
 
 import playerService from 'services/player.service';
@@ -12,6 +11,7 @@ import * as PlayerActionCreators from 'actions/player';
 import Header from 'components/Header';
 import AddPlayer from 'components/AddPlayer';
 import Player from 'containers/Player/Player';
+import PlayerDetail from 'containers/Player/PlayerDetail';
 
 import './scoreboard.css';
 
@@ -33,43 +33,12 @@ class Scoreboard extends Component {
         title: "My Scoreboard",
     };
 
-    // onScoreChange(index, delta) {
-    //     this.setState(update(this.state, {
-    //         players: {
-    //             [index] : {
-    //                 score: {
-    //                     $set: this.state.players[index].score + delta,
-    //                 }
-    //             }
-    //         }
-    //     }));
-    // }
-    //
-    // handleAddPlayer(name) {
-    //     this.setState(update(this.state, {
-    //         players: {
-    //             $push: [{
-    //                 name: name,
-    //                 score: 0,
-    //                 id: this.state.players.length + 1,
-    //             }],
-    //         }
-    //     }));
-    // }
-    //
-    // handleRemovePlayer(index) {
-    //     this.setState(update(this.state, {
-    //         players: {
-    //             $splice: [[index, 1]],
-    //         }
-    //     }));
-    // }
-
     render() {
-        const { dispatch, players } = this.props;
+        const { dispatch, players, selectedPlayerIndex } = this.props;
 
         const addPlayer = bindActionCreators(PlayerActionCreators.addPlayer, dispatch);
         const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispatch);
+        const selectPlayer = bindActionCreators(PlayerActionCreators.selectPlayer, dispatch);
         const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
 
         return (
@@ -84,6 +53,7 @@ class Scoreboard extends Component {
                                 score={player.score}
                                 key={player.name}
                                 updatePlayerScore={updatePlayerScore}
+                                selectPlayer={selectPlayer}
                                 removePlayer={removePlayer}
                             />
                         ))}
@@ -91,6 +61,7 @@ class Scoreboard extends Component {
                     <div className="add-player">
                         <AddPlayer addPlayer={addPlayer}/>
                     </div>
+                    {selectedPlayerIndex > -1 ? <PlayerDetail player={players[selectedPlayerIndex]}/> : "Please select a player"}
                 </Grid>
             </div>
         );
@@ -99,7 +70,8 @@ class Scoreboard extends Component {
 
 const mapStateToProps = state => (
     {
-        players: state.players
+        players: state.players,
+        selectedPlayerIndex: state.selectedPlayerIndex,
     }
 );
 
