@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 
 import { Grid } from 'react-bootstrap';
 
-import playerService from 'services/player.service';
-import * as PlayerActionCreators from 'actions/player';
+import PlayerActionCreators from 'actions/player';
 
 import Header from 'components/Header';
 import AddPlayer from 'components/AddPlayer';
@@ -16,30 +15,19 @@ import PlayerDetail from 'containers/Player/PlayerDetail';
 import './scoreboard.css';
 
 class Scoreboard extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            players: playerService.getPlayers()
-        };
-    }
-
     static propTypes = {
-        title: PropTypes.string.isRequired,
         players: PropTypes.array.isRequired,
     };
 
-    static defaultProps = {
-        title: "My Scoreboard",
-    };
-
     render() {
-        const { dispatch, players, selectedPlayerIndex } = this.props;
-
-        const addPlayer = bindActionCreators(PlayerActionCreators.addPlayer, dispatch);
-        const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispatch);
-        const selectPlayer = bindActionCreators(PlayerActionCreators.selectPlayer, dispatch);
-        const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
+        const {
+            players,
+            selectedPlayerIndex,
+            addPlayer,
+            removePlayer,
+            selectPlayer,
+            updatePlayerScore
+        } = this.props;
 
         return (
             <div className="scoreboard">
@@ -61,18 +49,23 @@ class Scoreboard extends Component {
                     <div className="add-player">
                         <AddPlayer addPlayer={addPlayer}/>
                     </div>
-                    {selectedPlayerIndex > -1 ? <PlayerDetail player={players[selectedPlayerIndex]}/> : "Please select a player"}
+                    {selectedPlayerIndex > -1 ?
+                        <PlayerDetail player={players[selectedPlayerIndex]}/> : "Please select a player"}
                 </Grid>
             </div>
         );
     }
 }
 
-const mapStateToProps = state => (
-    {
+const mapStateToProps = state => {
+    return {
         players: state.players,
         selectedPlayerIndex: state.selectedPlayerIndex,
-    }
-);
+    };
+};
 
-export default connect(mapStateToProps)(Scoreboard);
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(PlayerActionCreators, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Scoreboard);
