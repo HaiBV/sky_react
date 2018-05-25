@@ -69,6 +69,14 @@
     text-transform: uppercase;
 }
 
+.scoreboard .players .select-player {
+    display: inline-block;
+}
+
+.scoreboard .players .select-player:hover {
+    cursor: pointer;
+}
+
 .scoreboard .players .player-score {
     display: flex;
     align-items: center;

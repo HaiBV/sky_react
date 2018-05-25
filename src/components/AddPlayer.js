@@ -10,12 +10,12 @@ class AddPlayer extends Component {
             name: ""
         };
         this.handleChange = this.handleChange.bind(this);
-        this.submitPlayerName = this.submitPlayerName.bind(this);
+        this.addPlayer = this.addPlayer.bind(this);
     }
 
-    submitPlayerName(e) {
+    addPlayer(e) {
         e.preventDefault();
-        this.props.onAdd(this.state.name);
+        this.props.addPlayer(this.state.name);
         this.setState({ name: "" });
     }
 
@@ -25,7 +25,7 @@ class AddPlayer extends Component {
 
     render() {
         return (
-            <form onSubmit={this.submitPlayerName}>
+            <form onSubmit={this.addPlayer}>
                 <FormGroup>
                     <FormControl
                         type="text"
@@ -41,7 +41,7 @@ class AddPlayer extends Component {
 }
 
 AddPlayer.propTypes = {
-    onAdd: PropTypes.func.isRequired,
+    addPlayer: PropTypes.func.isRequired,
 };
 
 export default AddPlayer;

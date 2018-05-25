@@ -1,85 +1,71 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import update from 'react-addons-update';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import { Grid } from 'react-bootstrap';
+
+import { PlayerActionCreators } from 'actions';
+
 import Header from 'components/Header';
 import AddPlayer from 'components/AddPlayer';
 import Player from 'containers/Player/Player';
-import playerService from 'services/player.service';
+import PlayerDetail from 'containers/Player/PlayerDetail';
+
 import './scoreboard.css';
 
 class Scoreboard extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            players: playerService.getPlayers()
-        };
-    }
-
-    onScoreChange(index, delta) {
-        this.setState(update(this.state, {
-            players: {
-                [index] : {
-                    score: {
-                        $set: this.state.players[index].score + delta,
-                    }
-                }
-            }
-        }));
-    }
-
-    handleAddPlayer(name) {
-        this.setState(update(this.state, {
-            players: {
-                $push: [{
-                    name: name,
-                    score: 0,
-                    id: this.state.players.length + 1,
-                }],
-            }
-        }));
-    }
-
-    handleRemovePlayer(index) {
-        this.setState(update(this.state, {
-            players: {
-                $splice: [[index, 1]],
-            }
-        }));
-    }
+    static propTypes = {
+        players: PropTypes.array.isRequired,
+    };
 
     render() {
+        const {
+            players,
+            selectedPlayerIndex,
+            addPlayer,
+            removePlayer,
+            selectPlayer,
+            updatePlayerScore
+        } = this.props;
+
         return (
             <div className="scoreboard">
                 <Grid fluid={true}>
-                    <Header title={this.props.title} players={this.state.players}/>
+                    <Header title={this.props.title} players={players}/>
                     <div className="players">
-                        {this.state.players.map(function (player, index) {
-                            return (<Player key={player.id} name={player.name} score={player.score}
-                                            onScoreChange={function (delta) {
-                                                this.onScoreChange(index, delta)
-                                            }.bind(this)}
-                                            handleRemove={function () {
-                                                this.handleRemovePlayer(index);
-                                            }.bind(this)}/>);
-                        }.bind(this))}
+                        {players.map((player, index) => (
+                            <Player
+                                index={index}
+                                name={player.name}
+                                score={player.score}
+                                key={player.name}
+                                updatePlayerScore={updatePlayerScore}
+                                selectPlayer={selectPlayer}
+                                removePlayer={removePlayer}
+                            />
+                        ))}
                     </div>
                     <div className="add-player">
-                        <AddPlayer onAdd={this.handleAddPlayer.bind(this)}/>
+                        <AddPlayer addPlayer={addPlayer}/>
                     </div>
+                    {selectedPlayerIndex > -1 ?
+                        <PlayerDetail player={players[selectedPlayerIndex]}/> : "Please select a player"}
                 </Grid>
             </div>
         );
     }
 }
 
-Scoreboard.propTypes = {
-    title: PropTypes.string.isRequired,
+const mapStateToProps = state => {
+    return {
+        players: state.player.players,
+        selectedPlayerIndex: state.player.selectedPlayerIndex,
+    };
 };
 
-Scoreboard.defaultProps = {
-    title: "My Scoreboard",
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(PlayerActionCreators, dispatch);
 };
 
-export default Scoreboard;
+export default connect(mapStateToProps, mapDispatchToProps)(Scoreboard);

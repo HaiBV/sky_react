@@ -3,30 +3,27 @@ import PropTypes from 'prop-types';
 import {Row, Col, Button} from 'react-bootstrap';
 import Counter from 'components/Counter';
 
-class Player extends Component {
+export default class Player extends Component {
+    static propTypes = {
+        index: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        score: PropTypes.number.isRequired,
+        updatePlayerScore: PropTypes.func.isRequired,
+        removePlayer: PropTypes.func.isRequired,
+        selectPlayer: PropTypes.func.isRequired,
+    };
+
     render() {
         return (
             <Row>
-                <Col md={8} className="player-name">
-                    <Button className="remove-player" onClick={this.props.handleRemove}>X</Button>
-                    {this.props.name}
+                <Col md={8} xs={8} className="player-name">
+                    <Button className="remove-player" onClick={() => this.props.removePlayer(this.props.index)}>X</Button>
+                    <div className="select-player" onClick={() => this.props.selectPlayer(this.props.index)}>{this.props.name}</div>
                 </Col>
-                <Col md={4} className="player-score">
-                    <Counter score={this.props.score} onChange={this.props.onScoreChange}/>
+                <Col md={4} xs={4} className="player-score">
+                    <Counter index={this.props.index} score={this.props.score} updatePlayerScore={this.props.updatePlayerScore}/>
                 </Col>
             </Row>
         );
     }
 }
-
-Player.propTypes = {
-    name: PropTypes.string.isRequired,
-    score: PropTypes.number.isRequired,
-    onScoreChange: PropTypes.func.isRequired,
-    handleRemove: PropTypes.func.isRequired,
-};
-
-Player.defaultProps = {
-};
-
-export default Player;

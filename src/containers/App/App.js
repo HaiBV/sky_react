@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import logo from 'logo.svg';
-import './App.css';
+
 import FrontPage from 'components/FrontPage';
 import About from 'components/About';
 import Teachers from 'components/Teachers';
 import Courses from 'containers/Courses/Courses';
 import Navigation from 'components/Navigation';
-import Scoreboard from 'containers/Scoreboard/Scoreboard';
 import NotFound from 'components/NotFound';
+
+import Scoreboard from 'containers/Scoreboard/Scoreboard';
+
 import Featured from "components/Featured";
 import GifSearch from "components/GifSearch";
+
+import logo from 'logo.svg';
+import './App.css';
 
 class App extends Component {
     render() {
