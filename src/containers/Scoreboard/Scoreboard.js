@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { Grid } from 'react-bootstrap';
 
-import PlayerActionCreators from 'actions/player';
+import { PlayerActionCreators } from 'actions';
 
 import Header from 'components/Header';
 import AddPlayer from 'components/AddPlayer';
@@ -59,8 +59,8 @@ class Scoreboard extends Component {
 
 const mapStateToProps = state => {
     return {
-        players: state.players,
-        selectedPlayerIndex: state.selectedPlayerIndex,
+        players: state.player.players,
+        selectedPlayerIndex: state.player.selectedPlayerIndex,
     };
 };
 

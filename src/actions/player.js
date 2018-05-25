@@ -1,4 +1,4 @@
-import * as PlayerActionTypes from 'actiontypes/player';
+import { PlayerActionTypes } from 'actiontypes';
 
 export default {
     addPlayer: name => {
