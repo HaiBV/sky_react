@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class FrontPage extends Component {
-
     handleSubmit = (e) => {
         e.preventDefault();
         const teacherName = this.name.value,

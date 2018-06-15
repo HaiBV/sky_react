@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
 
 class Course extends Component {
@@ -13,5 +14,13 @@ class Course extends Component {
         );
     }
 }
+
+Course.PropTypes = {
+    name: PropTypes.string,
+    type: PropTypes.string,
+    description: PropTypes.string,
+    teacher: PropTypes.string,
+    teacher_topic: PropTypes.string,
+};
 
 export default Course;

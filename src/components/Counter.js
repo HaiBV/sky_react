@@ -6,9 +6,9 @@ class Counter extends Component {
     render() {
         return (
             <div>
-                <Button className="counter-action decrement btn-success" onClick={() => {this.props.updatePlayerScore(this.props.index, -1)}}>-</Button>
+                <Button className="counter-action decrement btn-success" onClick={this.props.updatePlayerScore(this.props.index, -1)}>-</Button>
                 <span className="counter-score"> {this.props.score} </span>
-                <Button className="counter-action increment btn-danger" onClick={() => {this.props.updatePlayerScore(this.props.index, 1)}}>+</Button>
+                <Button className="counter-action increment btn-danger" onClick={this.props.updatePlayerScore(this.props.index, 1)}>+</Button>
             </div>
         );
     }

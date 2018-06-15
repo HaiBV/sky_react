@@ -11,13 +11,13 @@ export default {
         return {
             type: PlayerActionTypes.REMOVE_PLAYER,
             index
-        }
+        };
     },
     selectPlayer: index => {
         return {
             type: PlayerActionTypes.SELECT_PLAYER,
             index
-        }
+        };
     },
     updatePlayerScore: (index, score) => {
         return {

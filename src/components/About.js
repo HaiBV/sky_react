@@ -1,14 +1,17 @@
-import React, {Component} from 'react';
+/* ES6 Stateless component */
+import React from 'react';
+import PropTypes from "prop-types";
 
-class About extends Component {
-    render() {
-        return (
-            <div>
-                <h3>{this.props.title}</h3>
+const About = (props) => {
+    return (
+        <div>
+            <h3>{props.title}</h3>
+        </div>
+    );
+};
 
-            </div>
-        );
-    }
-}
+About.propTypes = {
+    title: PropTypes.string
+};
 
 export default About;
