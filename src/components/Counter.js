@@ -2,17 +2,50 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Button} from 'react-bootstrap';
 
-class Counter extends Component {
-    render() {
-        return (
-            <div>
-                <Button className="counter-action decrement btn-success" onClick={this.props.updatePlayerScore(this.props.index, -1)}>-</Button>
-                <span className="counter-score"> {this.props.score} </span>
-                <Button className="counter-action increment btn-danger" onClick={this.props.updatePlayerScore(this.props.index, 1)}>+</Button>
-            </div>
-        );
-    }
-}
+// class Counter extends Component {
+//     constructor(props) {
+//         super(props);
+//
+//         this.decrementClick = this.decrementClick.bind(this);
+//         this.incrementClick = this.incrementClick.bind(this);
+//     }
+//     incrementClick() {
+//         this.props.updatePlayerScore(this.props.index, 1);
+//     }
+//     decrementClick() {
+//         this.props.updatePlayerScore(this.props.index, -1);
+//     }
+//     render() {
+//         return (
+//             <div>
+//                 <Button className="counter-action decrement btn-success"
+//                         onClick={this.decrementClick}>-</Button>
+//                 <span className="counter-score"> {this.props.score} </span>
+//                 <Button className="counter-action increment btn-danger"
+//                         onClick={this.incrementClick}>+</Button>
+//             </div>
+//         );
+//     }
+// }
+
+
+const Counter = (props) => {
+    const incrementClick = () => {
+        props.updatePlayerScore(props.index, 1);
+    };
+    const decrementClick = () => {
+        props.updatePlayerScore(props.index, -1);
+    };
+    return (
+        <div>
+            <Button className="counter-action decrement btn-success"
+                    onClick={decrementClick}>-</Button>
+            <span className="counter-score"> {props.score} </span>
+            <Button className="counter-action increment btn-danger"
+                    onClick={incrementClick}>+</Button>
+        </div>
+    );
+};
 
 Counter.propTypes = {
     index: PropTypes.number.isRequired,

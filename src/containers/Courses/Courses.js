@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Route, Redirect } from 'react-router-dom';
+import { NavLink, Route, Redirect } from 'react-router-dom';
 import { HTMLCourses, CSSCourses, JavascriptCourses } from 'data/Courses';
 import CourseContainer from './CourseContainer';
 

@@ -23,7 +23,7 @@ class GifSearch extends Component {
                 }
             })
             .then(response => this.setState({gifs: response.data.data}))
-            .catch(error => console.log('error is', error));
+            .catch(error => false);
     }
 
     render() {
