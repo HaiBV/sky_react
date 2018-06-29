@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import SearchForm from 'components/SearchForm';
-import GifList from 'components/GifList';
+import SearchForm from './SearchForm';
+import GifList from './GifList';
 import axios from 'axios';
 import {Row} from "react-bootstrap";
 

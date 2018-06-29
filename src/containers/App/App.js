@@ -11,8 +11,9 @@ import NotFound from 'components/NotFound';
 import Scoreboard from 'containers/Scoreboard/Scoreboard';
 
 import Featured from "components/Featured";
-import GifSearch from "components/GifSearch";
+import GifSearch from "components/Gif/GifSearch";
 
+// eslint-disable-next-line import/extensions
 import logo from 'logo.svg';
 import './App.css';
 

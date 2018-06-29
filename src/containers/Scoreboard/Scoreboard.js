@@ -8,9 +8,9 @@ import {Grid} from 'react-bootstrap';
 import {PlayerActionCreators} from 'actions';
 
 import Header from 'components/Header';
-import AddPlayer from 'components/AddPlayer';
-import Player from 'containers/Player/Player';
-import PlayerDetail from 'containers/Player/PlayerDetail';
+import AddPlayer from 'components/Player/AddPlayer';
+import Player from 'components/Player/Player';
+import PlayerDetail from 'components/Player/PlayerDetail';
 
 import './scoreboard.css';
 
@@ -26,7 +26,7 @@ const Scoreboard = (props) => {
 
     return (
         <div className="scoreboard">
-            <Grid fluid={true}>
+            <Grid fluid>
                 <Header title={props.title} players={players}/>
                 <div className="players">
                     {players.map((player, index) => (
@@ -52,9 +52,9 @@ const Scoreboard = (props) => {
 };
 
 Scoreboard.propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     players: PropTypes.array.isRequired,
-    selectedPlayerIndex: PropTypes.func,
+    selectedPlayerIndex: PropTypes.number,
     addPlayer: PropTypes.func,
     removePlayer: PropTypes.func,
     selectPlayer: PropTypes.func,
