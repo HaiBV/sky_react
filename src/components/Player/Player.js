@@ -16,17 +16,17 @@ class Player extends Component {
     }
 
     handleRemovePlayer() {
-        this.props.selectPlayer(this.props.index);
+        this.props.removePlayer(this.props.index);
     }
 
     render() {
         return (
             <Row>
-                <Col md={8} xs={8} className="player-name">
+                <Col md={8} className="player-name">
                     <Button className="remove-player" onClick={this.handleRemovePlayer}>X</Button>
                     <div className="select-player" onClick={this.handleSelectPlayer}>{this.props.name}</div>
                 </Col>
-                <Col md={4} xs={4} className="player-score">
+                <Col md={4} className="player-score">
                     <Counter index={this.props.index} score={this.props.score} updatePlayerScore={this.props.updatePlayerScore}/>
                 </Col>
             </Row>

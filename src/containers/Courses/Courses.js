@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { CourseActions } from 'actions';
 import { NavLink, Route, Redirect } from 'react-router-dom';
 import { HTMLCourses, CSSCourses, JavascriptCourses } from 'data/Courses';
 import CourseContainer from './CourseContainer';
@@ -14,12 +19,23 @@ class Courses extends Component {
                     <li><NavLink to={`${this.props.match.url}/javascript`}>Javascript</NavLink></li>
                 </ul>
                 <Route exact path={this.props.match.path} render={() => <Redirect to={`${this.props.match.path}/html`}/>}/>
-                <Route path={`${this.props.match.path}/html`} render={() => <CourseContainer data={HTMLCourses}/>} />
-                <Route path={`${this.props.match.path}/css`} render={() => <CourseContainer data={CSSCourses}/>} />
-                <Route path={`${this.props.match.path}/javascript`} render={() => <CourseContainer data={JavascriptCourses}/>} />
+                <Route path={`${this.props.match.path}/html`} render={() => <CourseContainer data={HTMLCourses}/>}/>
+                <Route path={`${this.props.match.path}/css`} render={() => <CourseContainer data={CSSCourses}/>}/>
+                <Route path={`${this.props.match.path}/javascript`} render={() => <CourseContainer data={JavascriptCourses}/>}/>
             </div>
         );
     }
 }
+
+Courses.propTypes = {
+    match: PropTypes.shape({
+        path: PropTypes.shape({
+            experiment: PropTypes.string,
+        }),
+        url: PropTypes.shape({
+            experiment: PropTypes.string,
+        }),
+    }).isRequired,
+};
 
 export default Courses;

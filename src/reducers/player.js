@@ -1,5 +1,14 @@
-import { PlayerActionTypes } from 'actiontypes';
+/**
+ * Action types
+ * */
+const ADD_PLAYER = 'player/ADD_PLAYER';
+const REMOVE_PLAYER = 'player/REMOVE_PLAYER';
+const UPDATE_PLAYER_SCORE = 'player/UPDATE_PLAYER_SCORE';
+const SELECT_PLAYER = 'player/SELECT_PLAYER';
 
+/**
+ * Initial state
+ * */
 const initialState = {
     players: [
         {
@@ -41,25 +50,60 @@ const initialState = {
     selectedPlayerIndex: -1,
 };
 
+/**
+ * Actions
+ * */
+export const PlayerActions = {
+    addPlayer: name => {
+        return {
+            type: ADD_PLAYER,
+            name
+        };
+    },
+    removePlayer: index => {
+        return {
+            type: REMOVE_PLAYER,
+            index
+        };
+    },
+    selectPlayer: index => {
+        return {
+            type: SELECT_PLAYER,
+            index
+        };
+    },
+    updatePlayerScore: (index, score) => {
+        return {
+            type: UPDATE_PLAYER_SCORE,
+            index,
+            score
+
+        };
+    },
+};
+
+/**
+ * Reduces
+ * */
 export default function Player(state = initialState, action) {
     let now = new Date();
     let date = `${now.getDate()}/${now.getMonth()}/${now.getFullYear()}`;
 
     switch (action.type) {
-        case PlayerActionTypes.ADD_PLAYER:
+        case ADD_PLAYER:
             return {
                 ...state,
                 players: [
                     ...state.players,
                     {
                         name: action.name,
-                        score: 0,
+                        score: 10,
                         created: date,
                         updated: '',
                     }
                 ],
             };
-        case PlayerActionTypes.REMOVE_PLAYER:
+        case REMOVE_PLAYER:
             return {
                 ...state,
                 players: [
@@ -67,7 +111,7 @@ export default function Player(state = initialState, action) {
                     ...state.players.slice(action.index + 1),
                 ],
             };
-        case PlayerActionTypes.UPDATE_PLAYER_SCORE:
+        case UPDATE_PLAYER_SCORE:
             return {
                 ...state,
                 players: state.players.map((player, index) => {
@@ -76,12 +120,12 @@ export default function Player(state = initialState, action) {
                             ...player,
                             score: player.score + action.score,
                             updated: date,
-                        }
+                        };
                     }
                     return player;
                 }),
             };
-        case PlayerActionTypes.SELECT_PLAYER:
+        case SELECT_PLAYER:
             return {
                 ...state,
                 selectedPlayerIndex: action.index,

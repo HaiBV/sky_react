@@ -1,3 +1,4 @@
-import PlayerActionCreators from './player';
+import {PlayerActions} from 'reducers/player';
+import {CourseActions} from 'reducers/course';
 
-export { PlayerActionCreators };
+export {PlayerActions, CourseActions};

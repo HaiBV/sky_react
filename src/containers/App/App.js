@@ -35,8 +35,8 @@ class App extends Component {
                             <Route exact path="/" component={FrontPage}/>
                             <Route path="/about" render={() => <About title="About lorem"/>}/>
                             <Route exact path="/teachers" component={Teachers}/>
-                            <Route path="/teachers/:topic/:teacher" component={Featured}/>
                             <Route path="/courses" component={Courses}/>
+                            <Route path="/author/:topic/:author" component={Featured}/>
                             <Route path="/scoreboard" component={Scoreboard}/>
                             <Route path="/gif-search" component={GifSearch}/>
                             <Route component={NotFound}/>

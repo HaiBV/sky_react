@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import {Grid} from 'react-bootstrap';
 
-import {PlayerActionCreators} from 'actions';
+import {PlayerActions} from 'actions';
 
 import Header from 'components/Header';
 import AddPlayer from 'components/Player/AddPlayer';
@@ -69,7 +69,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(PlayerActionCreators, dispatch);
+    return bindActionCreators(PlayerActions, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Scoreboard);

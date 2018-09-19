@@ -19,6 +19,7 @@ import {Button} from 'react-bootstrap';
 //         return (
 //             <div>
 //                 <Button className="counter-action decrement btn-success"
+//                         disabled={this.props.score === 0}
 //                         onClick={this.decrementClick}>-</Button>
 //                 <span className="counter-score"> {this.props.score} </span>
 //                 <Button className="counter-action increment btn-danger"
@@ -37,13 +38,14 @@ const Counter = (props) => {
         props.updatePlayerScore(props.index, -1);
     };
     return (
-        <div>
+        <React.Fragment>
             <Button className="counter-action decrement btn-success"
+                    disabled={props.score === 0}
                     onClick={decrementClick}>-</Button>
             <span className="counter-score"> {props.score} </span>
             <Button className="counter-action increment btn-danger"
                     onClick={incrementClick}>+</Button>
-        </div>
+        </React.Fragment>
     );
 };
 
