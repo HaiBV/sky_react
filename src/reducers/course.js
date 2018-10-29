@@ -108,7 +108,7 @@ export const CourseActions = {
 /**
  * Reduces
  * */
-export default function Player(state = initialState, action) {
+export default function Course(state = initialState, action) {
     switch (action.type) {
         case ADD_COURSE:
             return {
