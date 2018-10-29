@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import { Button, Col, Row } from "react-bootstrap";
 
-const Course = (props) => {
+const Course = props => {
     const {
         course,
     } = props;
     return (
-        <div>
-            <h3>{course.id}</h3>
-            <div>{course.type}</div>
-        </div>
+        <Row className="course-item">
+            <Col md={1} className="course-action">
+                <Button bsStyle="link" className="course-detail">Watch</Button>
+            </Col>
+            <Col md={7} className="course-title">{course.title}</Col>
+            <Col md={2} className="course-author">{course.author}</Col>
+            <Col md={1} className="course-category">{course.category}</Col>
+            <Col md={1} className="course-length">{course.length}</Col>
+        </Row>
     );
 };
 

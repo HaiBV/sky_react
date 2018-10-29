@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Button} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 // class Counter extends Component {
 //     constructor(props) {
@@ -30,7 +30,7 @@ import {Button} from 'react-bootstrap';
 // }
 
 
-const Counter = (props) => {
+const Counter = props => {
     const incrementClick = () => {
         props.updatePlayerScore(props.index, 1);
     };

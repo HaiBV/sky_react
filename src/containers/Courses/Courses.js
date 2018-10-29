@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Grid } from "react-bootstrap";
+import { Button, Col, Grid, Row } from "react-bootstrap";
 import { CourseActions } from 'actions';
 import Course from "components/Course/Course";
+import './course.css';
 
 class Courses extends Component {
     constructor(props) {
@@ -18,6 +19,17 @@ class Courses extends Component {
         return (
             <div className="course-board">
                 <Grid fluid>
+                    <Row className="course-list-actions">
+                        <h1>Manage Courses</h1>
+                        <Button bsStyle="primary">Add course</Button>
+                    </Row>
+                    <Row className="course-header">
+                        <Col md={1}/>
+                        <Col md={7} className="course-title">Title</Col>
+                        <Col md={2} className="course-author">Author</Col>
+                        <Col md={1} className="course-category">Category</Col>
+                        <Col md={1} className="course-length">Length</Col>
+                    </Row>
                     <div className="courses">
                         {this.courses.map((course, index) => (
                             <Course
