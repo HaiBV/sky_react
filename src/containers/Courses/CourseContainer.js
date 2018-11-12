@@ -7,7 +7,7 @@ import { Grid } from "react-bootstrap";
 import { CourseActions } from 'reducers';
 import './course.css';
 import { Route, Switch } from "react-router-dom";
-import CourseList from "components/Course/CourseList";
+import CourseTable from "components/Course/CourseTable";
 import AddCourse from "components/Course/AddCourse";
 import CourseDetail from "components/Course/CourseDetail";
 
@@ -27,9 +27,9 @@ class CourseContainer extends Component {
                     <h1>Manage Courses</h1>
                     <Switch>
                         <Route exact path={this.match.path}
-                               render={props => <CourseList courses={this.courses} {...props}/>}/>
+                               render={props => <CourseTable courses={this.courses} {...props}/>}/>
                         <Route path={`${this.match.path}/add-course`} render={() => <AddCourse/>}/>
-                        <Route path={`${this.match.path}/:courseId`}
+                        <Route path={`${this.match.path}/:id`}
                                render={props => <CourseDetail courses={this.courses} {...props}/>}/>
                     </Switch>
                 </Grid>
@@ -41,7 +41,7 @@ class CourseContainer extends Component {
 CourseContainer.propTypes = {
     courses: PropTypes.array.isRequired,
     addCourse: PropTypes.func,
-    match: PropTypes.array,
+    match: PropTypes.object,
 };
 
 

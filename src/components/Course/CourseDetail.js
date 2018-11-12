@@ -1,19 +1,16 @@
 import React from 'react';
 
 const CourseDetail = props => {
-    // const {
-    //     courses,
-    //     match,
-    // } = props;
-    //
-    // const courseId = match.params.courseId;
-    // const course = courses.find(source => {
-    //     return source.id === courseId;
-    // });
+    const {
+        courses,
+        match,
+    } = props;
+
+    const course = courses.find(course => course.id === parseInt(match.params.id));
 
     return (
         <div>
-            {/*{course}*/}
+            {course.id}
         </div>
     );
 };

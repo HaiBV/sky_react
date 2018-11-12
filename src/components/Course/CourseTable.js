@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Button, Col, Row } from "react-bootstrap";
-import Course from "components/Course/Course";
+import CourseRow from "components/Course/CourseRow";
 
-class CourseList extends Component {
+class CourseTable extends Component {
     constructor(props) {
         super(props);
 
@@ -30,7 +30,7 @@ class CourseList extends Component {
                 </Row>
                 <div className="courses">
                     {this.courses.map((course, index) => (
-                        <Course
+                        <CourseRow
                             key={course.id}
                             index={index}
                             course={course}
@@ -43,9 +43,9 @@ class CourseList extends Component {
     }
 }
 
-CourseList.propTypes = {
+CourseTable.propTypes = {
     courses: PropTypes.array.isRequired,
     addCourse: PropTypes.func,
 };
 
-export default CourseList;
+export default CourseTable;
