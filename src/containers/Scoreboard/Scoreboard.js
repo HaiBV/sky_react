@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import {Grid} from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
 
-import {PlayerActions} from 'actions';
+import { PlayerActions } from 'reducers';
 
 import Header from 'components/Header';
 import AddPlayer from 'components/Player/AddPlayer';
