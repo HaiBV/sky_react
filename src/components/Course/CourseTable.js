@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Button, Col, Row } from "react-bootstrap";
 import CourseRow from "components/Course/CourseRow";
+import { Link } from "react-router-dom";
 
 class CourseTable extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class CourseTable extends Component {
             <React.Fragment>
                 <Row className="course-list-actions">
                     <Col md={12}>
-                        <Button bsStyle="primary">Add course</Button>
+                        <Button bsStyle="link"><Link to={`${this.match.path}/add-course`}>Add course</Link></Button>
                     </Col>
                 </Row>
                 <Row className="course-header">
@@ -34,7 +35,7 @@ class CourseTable extends Component {
                             key={course.id}
                             index={index}
                             course={course}
-                            match={this.match}
+                            {...this.props}
                         />
                     ))}
                 </div>
@@ -46,6 +47,7 @@ class CourseTable extends Component {
 CourseTable.propTypes = {
     courses: PropTypes.array.isRequired,
     addCourse: PropTypes.func,
+    match: PropTypes.object,
 };
 
 export default CourseTable;

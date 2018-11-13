@@ -27,6 +27,7 @@ Course.propTypes = {
     }),
     index: PropTypes.number,
     type: PropTypes.string,
+    match: object,
 };
 
 export default Course;

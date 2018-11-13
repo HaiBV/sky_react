@@ -28,7 +28,7 @@ class CourseContainer extends Component {
                     <Switch>
                         <Route exact path={this.match.path}
                                render={props => <CourseTable courses={this.courses} {...props}/>}/>
-                        <Route path={`${this.match.path}/add-course`} render={() => <AddCourse/>}/>
+                        <Route path={`${this.match.path}/add-course`} render={props => <AddCourse {...props} />}/>
                         <Route path={`${this.match.path}/:id`}
                                render={props => <CourseDetail courses={this.courses} {...props}/>}/>
                     </Switch>
