@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { Button, Col, Row } from "react-bootstrap";
 import CourseRow from "components/Course/CourseRow";
@@ -50,4 +51,10 @@ CourseTable.propTypes = {
     match: PropTypes.object,
 };
 
-export default CourseTable;
+const mapStateToProps = state => {
+    return {
+        courses: state.course.courses,
+    };
+};
+
+export default connect(mapStateToProps)(CourseTable);

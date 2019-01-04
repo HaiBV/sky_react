@@ -116,6 +116,7 @@ export default function Course(state = initialState, action) {
                 courses: [
                     ...state.courses,
                     {
+                        id: Date.now(),
                         title: action.title,
                         courseType: action.courseType,
                         description: action.description,

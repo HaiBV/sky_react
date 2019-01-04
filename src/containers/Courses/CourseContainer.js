@@ -44,7 +44,6 @@ CourseContainer.propTypes = {
     match: PropTypes.object,
 };
 
-
 const mapStateToProps = state => {
     return {
         courses: state.course.courses,
