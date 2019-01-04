@@ -11,7 +11,7 @@ const initialState = {
         {
             id: 1,
             title: 'HTML Basics',
-            type: 'Course',
+            courseType: 'Course',
             description: 'Learn HTML (HyperText Markup Language), the language common to every website. HTML describes the basic structure and content of a web page. If you want to build a website or web application, you\'ll need to know HTML.',
             author: 'Guil Hernandez',
             category: 'HTML',
@@ -20,7 +20,7 @@ const initialState = {
         {
             id: 2,
             title: 'HTML Video and Audio',
-            type: 'Course',
+            courseType: 'Course',
             description: 'Text and images have always been the foundation of web content, but more than ever, video and audio are also a part of that content mix. Fortunately, we can now create standards-based video and audio players that don\'t require the use of plugins. Adding video and audio to a webpage is almost as easy as adding an image or formatting some text.',
             author: 'Nick Pettir',
             category: 'HTML',
@@ -29,7 +29,7 @@ const initialState = {
         {
             id: 3,
             title: 'SVG Workflow and Tools',
-            type: 'Workshop',
+            courseType: 'Workshop',
             description: 'Learn useful tools and techniques for optimizing, organizing and structuring your SVG files. Then build an SVG icon system using a Gulp-based SVG sprite tool.',
             author: 'Guil Hernandez',
             category: 'HTML',
@@ -38,7 +38,7 @@ const initialState = {
         {
             id: 4,
             title: 'Using CSS Variables',
-            type: 'Workshop',
+            courseType: 'Workshop',
             description: 'Learn how to use native CSS variables to make your stylesheets less repetitive, easier to maintain and more.',
             author: 'Guil Hernandez',
             category: 'HTML',
@@ -47,7 +47,7 @@ const initialState = {
         {
             id: 5,
             title: 'Bootstrap 4 Basics',
-            type: 'Course',
+            courseType: 'Course',
             description: 'Learn to use the latest in Bootstrap 4, one of the most popular open source front end frameworks, to help you build a functional design and layout in little time.',
             author: 'Guil Hernandez',
             category: 'HTML',
@@ -56,7 +56,7 @@ const initialState = {
         {
             id: 6,
             title: 'Practice Flexible CSS Grid Layout',
-            type: 'Workshop',
+            courseType: 'Workshop',
             description: 'Practice using CSS Grid features that adapt your content to available space and intelligently size and position items within the grid container.',
             author: 'Guil Hernandez',
             category: 'HTML',
@@ -65,7 +65,7 @@ const initialState = {
         {
             id: 7,
             title: 'Object-Oriented Javascript',
-            type: 'Course',
+            courseType: 'Course',
             description: 'In this course you\'ll learn the basics of object-oriented programming in JavaScript along with the new ES2015 Class syntax. ',
             author: 'Ashley Boucher',
             category: 'Javascript',
@@ -74,7 +74,7 @@ const initialState = {
         {
             id: 8,
             title: 'Practice Basic Arrays in JavaScript',
-            type: 'Workshop',
+            courseType: 'Workshop',
             description: 'Practice creating array literals, accessing array items, and using array methods to add and remove array items.',
             author: 'Dave McFarland',
             category: 'Javascript',
@@ -83,7 +83,7 @@ const initialState = {
         {
             id: 9,
             title: 'jQuery Basics',
-            type: 'Course',
+            courseType: 'Course',
             description: 'jQuery is an immensely popular JavaScript library used to add interactivity to webpages. It\'s a mature and robust tool that can help you build confidence as a developer by helping you quickly and easily get projects up and running. This course explores the fundamentals of manipulating elements on a webpage and responding to user interactions. We cover what jQuery is, why you\'d want to use it, and how to include it in your projects. Throughout the course, you\'ll use jQuery to enhance several small projects and learn how to add a level of flair and interactivity to any site you work on.',
             author: 'Treasure Porth',
             category: 'Javascript',
@@ -97,10 +97,10 @@ const initialState = {
  * Actions
  * */
 export const CourseActions = {
-    addPlayer: title => {
+    addCourse: dataCourse => {
         return {
             type: ADD_COURSE,
-            title
+            ...dataCourse
         };
     },
 };
@@ -117,11 +117,11 @@ export default function Course(state = initialState, action) {
                     ...state.courses,
                     {
                         title: action.title,
-                        type: 'Workshop',
-                        description: 'Practice creating array literals, accessing array items, and using array methods to add and remove array items.',
-                        author: 'Dave McFarland',
-                        category: 'Javascript',
-                        length: 300,
+                        courseType: action.courseType,
+                        description: action.description,
+                        author: action.author,
+                        category: action.category,
+                        length: action.length,
                     }
                 ],
             };

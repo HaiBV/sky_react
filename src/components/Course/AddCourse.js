@@ -6,21 +6,35 @@ class AddCourse extends Component {
     constructor(props) {
         super(props);
 
+        this.defaultFormValues = {
+            title: "",
+            courseType: "",
+            description: "",
+            author: "",
+            category: "",
+            length: "",
+        }
+
         this.state = {
-            name: ""
+            ...this.defaultFormValues,
         };
+
         this.handleChange = this.handleChange.bind(this);
         this.addCourse = this.addCourse.bind(this);
     }
 
     addCourse(e) {
         e.preventDefault();
-        // this.props.addPlayer(this.state.name);
-        this.setState({name: ""});
+        const data = new FormData(e.target);
+        for (const [_key, _value] of data.entries()) {
+            console.log(_key, _value);
+        }
+        this.props.addCourse(this.state);
+        this.setState({ ...this.defaultFormValues });
     }
 
     handleChange(e) {
-        this.setState({name: e.target.value});
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     render() {
@@ -32,15 +46,13 @@ class AddCourse extends Component {
                     </Col>
                 </Row>
                 <Form horizontal onSubmit={this.addCourse}>
-                    <FormGroup controlId="formHorizontalEmail">
+                    <FormGroup controlId="formHorizontalTitle">
                         <Col componentClass={ControlLabel} sm={2}>
                             Title
                         </Col>
                         <Col sm={5}>
-                            <FormControl
-                                type="text" placeholder="Title"
-                                value={this.state.name}
-                                onChange={this.handleChange}/>
+                            <FormControl name="title" type="text" placeholder="Title" value={this.state.title}
+                                onChange={this.handleChange} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="formHorizontalType">
@@ -48,7 +60,8 @@ class AddCourse extends Component {
                             Type
                         </Col>
                         <Col sm={5}>
-                            <FormControl type="text" placeholder="Type"/>
+                            <FormControl name="courseType" type="text" placeholder="Type" value={this.state.courseType}
+                                onChange={this.handleChange} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="formHorizontalDescription">
@@ -56,7 +69,8 @@ class AddCourse extends Component {
                             Description
                         </Col>
                         <Col sm={5}>
-                            <FormControl type="text" placeholder="Description"/>
+                            <FormControl name="description" type="text" placeholder="Description" value={this.state.description}
+                                onChange={this.handleChange} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="formHorizontalAuthor">
@@ -64,15 +78,17 @@ class AddCourse extends Component {
                             Author
                         </Col>
                         <Col sm={5}>
-                            <FormControl type="text" placeholder="Author"/>
+                            <FormControl name="author" type="text" placeholder="Author" value={this.state.author}
+                                onChange={this.handleChange} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="formHorizontalCategory">
                         <Col componentClass={ControlLabel} sm={2}>
                             Category
                         </Col>
-                        <Col Player sm={5}>
-                            <FormControl type="text" placeholder="Category"/>
+                        <Col sm={5}>
+                            <FormControl name="category" type="text" placeholder="Category" value={this.state.category}
+                                onChange={this.handleChange} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="formHorizontalLength">
@@ -80,7 +96,8 @@ class AddCourse extends Component {
                             Length
                         </Col>
                         <Col sm={5}>
-                            <FormControl type="text" placeholder="Length"/>
+                            <FormControl name="length" type="text" placeholder="Length" value={this.state.length}
+                                onChange={this.handleChange} />
                         </Col>
                     </FormGroup>
                     <Button type="submit">Add Course</Button>
