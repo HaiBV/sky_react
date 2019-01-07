@@ -4,15 +4,16 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import FrontPage from 'components/FrontPage';
 import About from 'components/About';
 import Teachers from 'components/Teachers';
-import Courses from 'containers/Courses/Courses';
+import CourseContainer from 'containers/Courses/CourseContainer';
 import Navigation from 'components/Navigation';
 import NotFound from 'components/NotFound';
 
 import Scoreboard from 'containers/Scoreboard/Scoreboard';
 
 import Featured from "components/Featured";
-import GifSearch from "components/GifSearch";
+import GifSearch from "components/Gif/GifSearch";
 
+// eslint-disable-next-line import/extensions
 import logo from 'logo.svg';
 import './App.css';
 
@@ -34,8 +35,8 @@ class App extends Component {
                             <Route exact path="/" component={FrontPage}/>
                             <Route path="/about" render={() => <About title="About lorem"/>}/>
                             <Route exact path="/teachers" component={Teachers}/>
-                            <Route path="/teachers/:topic/:teacher" component={Featured}/>
-                            <Route path="/courses" component={Courses}/>
+                            <Route path="/courses" component={CourseContainer}/>
+                            <Route path="/author/:topic/:author" component={Featured}/>
                             <Route path="/scoreboard" component={Scoreboard}/>
                             <Route path="/gif-search" component={GifSearch}/>
                             <Route component={NotFound}/>

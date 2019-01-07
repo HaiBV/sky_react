@@ -84,5 +84,8 @@
 }
 
 .scoreboard .players .player-score .counter-score {
+    display: inline-block;
+    min-width: 80px;
     padding: 0 20px;
+    text-align: center;
 }
