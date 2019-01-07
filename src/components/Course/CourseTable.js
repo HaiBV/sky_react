@@ -10,7 +10,6 @@ class CourseTable extends Component {
     constructor(props) {
         super(props);
 
-        this.addCourse = props.addCourse;
         this.courses = props.courses;
         this.match = props.match;
     }
@@ -47,7 +46,6 @@ class CourseTable extends Component {
 
 CourseTable.propTypes = {
     courses: PropTypes.array.isRequired,
-    addCourse: PropTypes.func,
     match: PropTypes.object,
 };
 
