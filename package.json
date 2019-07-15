@@ -1,37 +1,24 @@
 {
-  "name": "sky_react",
-  "version": "0.1.0",
+  "name": "sky-react",
+  "version": "0.0.0",
   "private": true,
-  "dependencies": {
-    "axios": "^0.18.0",
-    "react": "^16.7.0",
-    "react-addons-update": "^15.6.2",
-    "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.7.0",
-    "react-redux": "^6.0.0",
-    "react-router": "^4.2.0",
-    "react-router-bootstrap": "^0.24.4",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "2.1.2",
-    "redux": "^4.0.0"
-  },
   "scripts": {
-    "start": "cross-env NODE_PATH=src react-scripts start",
-    "build": "cross-env NODE_PATH=src react-scripts build",
-    "test": "cross-env NODE_PATH=src react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "node ./bin/www",
+    "server": "nodemon ./bin/www",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11"
   },
   "devDependencies": {
-    "cross-env": "^5.1.4"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "homepage": "https://HaiBV.github.io/sky_react/"
+    "concurrently": "^4.1.1",
+    "nodemon": "^1.19.1"
+  }
 }
