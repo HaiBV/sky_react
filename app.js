@@ -1,17 +1,18 @@
+require('app-module-path').addPath('.');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var routers = require('./routers');
+var routers = require('routers');
 
-const connectDB = require('./config/db');
+const connectDB = require('config/db');
 
 var app = express();
 
 connectDB();
-
+console.log(app._routers);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

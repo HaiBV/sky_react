@@ -1,5 +1,7 @@
 const router = require('express').Router();
+const HomeController = require('controllers/HomeController');
 
-router.use('/users', require('./home'));
+/* GET user route. */
+router.get('/', HomeController.index);
 
 module.exports = router;

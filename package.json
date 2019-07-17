@@ -10,6 +10,7 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
+    "app-module-path": "^2.2.0",
     "bcryptjs": "^2.4.3",
     "config": "^3.1.0",
     "cookie-parser": "~1.4.4",
