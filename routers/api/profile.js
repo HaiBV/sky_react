@@ -1,5 +1,4 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 
 /* GET user route. */
 router.get('/', (req, res, next) => res.send('Profile route'));
