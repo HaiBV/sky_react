@@ -12,7 +12,7 @@ const connectDB = require('config/db');
 var app = express();
 
 connectDB();
-console.log(app._routers);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
