@@ -15,6 +15,12 @@ User = {
           ).isLength({ min: 6 })
         ];
       }
+      case 'login': {
+        return [
+          check('email', 'Please include a valid email').isEmail(),
+          check('password', 'Password is required').exists()
+        ];
+      }
     }
   }
 };
