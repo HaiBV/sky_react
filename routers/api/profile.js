@@ -6,5 +6,6 @@ const ProfileController = require('controllers/api/ProfileController');
 /* GET user route. */
 router.get('/me', auth, ProfileController.detail);
 router.post('/', [auth, ProfileMiddleware.validator('createProfile')], ProfileController.storeOrUpdate);
+router.delete('/', auth, ProfileController.delete);
 
 module.exports = router;

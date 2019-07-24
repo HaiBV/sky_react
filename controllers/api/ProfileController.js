@@ -65,6 +65,17 @@ const ProfileController = {
       console.error(err.message);
       res.status(500).send('Server Error');
     }
+  },
+  delete: async (req, res) => {
+    try {
+      // Remove profile
+      await Profile.findOneAndRemove({ user: req.user.id });
+
+      res.json({ msg: 'Profile deleted' });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
   }
 };
 
