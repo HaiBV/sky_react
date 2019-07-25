@@ -1,0 +1,227 @@
+{
+	"id": "7beff2ad-4d0b-f766-1d1d-6bf2d559f884",
+	"name": "MERN",
+	"description": "",
+	"order": [
+		"9b1c068b-ef9b-d0e7-3922-07a07e3f2981",
+		"1d784932-19a2-d932-28e5-f123834c36f4",
+		"04645d9b-608b-ca70-e350-bd8b56993f45",
+		"dafeeb49-63c6-acfa-bcae-da706bff26f3",
+		"b355fa3f-18d5-44d7-efb5-ab75fc5b77f9",
+		"8466b8b3-4f26-42ee-4c9d-9d93697912a1"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1563375023058,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "04645d9b-608b-ca70-e350-bd8b56993f45",
+			"headers": "Content-Type: application/json\nx-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQyZjNmYjJmZmFkZjMzM2FjNDFiZjkxIn0sImlhdCI6MTU2NDA2ODQyMSwiZXhwIjoxNTY0NDI4NDIxfQ.N79WOnvwDzobjJ50pMBYjYAnKJ-4CPpChFeRGGwbqps\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-auth-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQyZjNmYjJmZmFkZjMzM2FjNDFiZjkxIn0sImlhdCI6MTU2NDA2ODQyMSwiZXhwIjoxNTY0NDI4NDIxfQ.N79WOnvwDzobjJ50pMBYjYAnKJ-4CPpChFeRGGwbqps",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:5000/api/profile/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1564069254957,
+			"name": "Create of Update profile of current user API ",
+			"description": "ProfileController.storeOrUpdate",
+			"collectionId": "7beff2ad-4d0b-f766-1d1d-6bf2d559f884",
+			"responses": [],
+			"rawModeData": "{\n\t\"title\": \"test titleeee\",\n\t\"company\": \"test companyyyy\",\n\t\"location\": \"test locationnnn\",\n\t\"from\": \"8-10-2010\",\n\t\"current\": true,\n\t\"description\": \"test descriptionnnn\"\n}"
+		},
+		{
+			"id": "1d784932-19a2-d932-28e5-f123834c36f4",
+			"headers": "Content-Type: application/json\nx-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQyZjNmYjJmZmFkZjMzM2FjNDFiZjkxIn0sImlhdCI6MTU2NDA2ODQyMSwiZXhwIjoxNTY0NDI4NDIxfQ.N79WOnvwDzobjJ50pMBYjYAnKJ-4CPpChFeRGGwbqps\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-auth-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQyZjNmYjJmZmFkZjMzM2FjNDFiZjkxIn0sImlhdCI6MTU2NDA2ODQyMSwiZXhwIjoxNTY0NDI4NDIxfQ.N79WOnvwDzobjJ50pMBYjYAnKJ-4CPpChFeRGGwbqps",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:5000/api/profile/experience",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1564069016738,
+			"name": "Add experience API",
+			"description": "ProfileController.addExperience",
+			"collectionId": "7beff2ad-4d0b-f766-1d1d-6bf2d559f884",
+			"responses": [],
+			"rawModeData": "{\n\t\"title\": \"test titleeee\",\n\t\"company\": \"test companyyyy\",\n\t\"location\": \"test locationnnn\",\n\t\"from\": \"8-10-2010\",\n\t\"current\": true,\n\t\"description\": \"test descriptionnnn\"\n}"
+		},
+		{
+			"id": "8466b8b3-4f26-42ee-4c9d-9d93697912a1",
+			"headers": "Content-Type: application/json\nx-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQyZjNmYjJmZmFkZjMzM2FjNDFiZjkxIn0sImlhdCI6MTU2NDA2ODQyMSwiZXhwIjoxNTY0NDI4NDIxfQ.N79WOnvwDzobjJ50pMBYjYAnKJ-4CPpChFeRGGwbqps\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-auth-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQyZjNmYjJmZmFkZjMzM2FjNDFiZjkxIn0sImlhdCI6MTU2NDA2ODQyMSwiZXhwIjoxNTY0NDI4NDIxfQ.N79WOnvwDzobjJ50pMBYjYAnKJ-4CPpChFeRGGwbqps",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:5000/api/profile",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "7beff2ad-4d0b-f766-1d1d-6bf2d559f884",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Get All Profiles",
+			"description": "ProfileController.getAll",
+			"descriptionFormat": "html",
+			"time": 1564068652018,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": ""
+		},
+		{
+			"id": "9b1c068b-ef9b-d0e7-3922-07a07e3f2981",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:5000/api/user/store",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "7beff2ad-4d0b-f766-1d1d-6bf2d559f884",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Store new user",
+			"description": "UserController.store",
+			"descriptionFormat": "html",
+			"time": 1563375027189,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"name\": \"skyyyyyyyyyyyyyyy\"\n}"
+		},
+		{
+			"id": "b355fa3f-18d5-44d7-efb5-ab75fc5b77f9",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:5000/api/auth",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "7beff2ad-4d0b-f766-1d1d-6bf2d559f884",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Login API",
+			"description": " AuthController.login",
+			"descriptionFormat": "html",
+			"time": 1564068444963,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"email\": \"anchoi.h3t@gmail.com\",\n\t\"password\": \"1234567\"\n}"
+		},
+		{
+			"id": "dafeeb49-63c6-acfa-bcae-da706bff26f3",
+			"headers": "Content-Type: application/json\nx-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQyZjNmYjJmZmFkZjMzM2FjNDFiZjkxIn0sImlhdCI6MTU2NDA2ODQyMSwiZXhwIjoxNTY0NDI4NDIxfQ.N79WOnvwDzobjJ50pMBYjYAnKJ-4CPpChFeRGGwbqps\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-auth-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQyZjNmYjJmZmFkZjMzM2FjNDFiZjkxIn0sImlhdCI6MTU2NDA2ODQyMSwiZXhwIjoxNTY0NDI4NDIxfQ.N79WOnvwDzobjJ50pMBYjYAnKJ-4CPpChFeRGGwbqps",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:5000/api/profile/me",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1564069177898,
+			"name": "Get profilie of current user",
+			"description": "ProfileController.detail",
+			"collectionId": "7beff2ad-4d0b-f766-1d1d-6bf2d559f884",
+			"responses": [],
+			"rawModeData": "{\n\t\"title\": \"test titleeee\",\n\t\"company\": \"test companyyyy\",\n\t\"location\": \"test locationnnn\",\n\t\"from\": \"8-10-2010\",\n\t\"current\": true,\n\t\"description\": \"test descriptionnnn\"\n}"
+		}
+	]
+}
