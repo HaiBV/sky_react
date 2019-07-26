@@ -10,6 +10,13 @@ Post = {
             .isEmpty()
         ];
       }
+      case 'addComment': {
+        return [
+          check('text', 'Text is required')
+            .not()
+            .isEmpty()
+        ];
+      }
       default: {
         return [];
       }
