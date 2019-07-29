@@ -1,0 +1,91 @@
+.scoreboard {
+    width: auto;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+}
+
+.scoreboard .btn {
+    border-radius: 0;
+}
+
+.scoreboard .header {
+    display: flex;
+    align-items: center;
+    padding: 10px 5px 15px;
+}
+
+.scoreboard .header table td.title {
+    text-align: right;
+    color: gray;
+}
+
+.scoreboard .header table td.value {
+    font-weight: bold;
+}
+
+.scoreboard .header .stopwatch {
+    text-align: center;
+}
+
+.scoreboard .header .stopwatch .btn {
+    margin-right: 5px;
+}
+
+.scoreboard .header .stopwatch .btn:last-of-type {
+    margin-right: 0;
+}
+
+.scoreboard .players > .row {
+    background-color: dimgrey;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.scoreboard .players .player-name .remove-player {
+    visibility: hidden;
+    background-color: dimgrey;
+    border: none;
+    color: black;
+}
+
+.scoreboard .players .player-name:hover .remove-player {
+    visibility: visible;
+}
+
+.scoreboard .add-player {
+    padding-top: 15px;
+}
+
+.scoreboard .add-player input {
+    margin-bottom: 10px;
+}
+
+.scoreboard .add-player .btn {
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.scoreboard .players .select-player {
+    display: inline-block;
+}
+
+.scoreboard .players .select-player:hover {
+    cursor: pointer;
+}
+
+.scoreboard .players .player-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreboard .players .player-score .counter-score {
+    display: inline-block;
+    min-width: 80px;
+    padding: 0 20px;
+    text-align: center;
+}
