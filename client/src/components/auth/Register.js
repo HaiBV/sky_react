@@ -2,12 +2,12 @@ import React, { Fragment, useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import { setAlert } from '../../actions/alertActions';
+import { register } from '../../actions/authActions';
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register }) => {
   const [formData, setformData] = useState({
     name: '',
     email: '',
@@ -26,24 +26,7 @@ const Register = ({ setAlert }) => {
     if (password !== password_confirm) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      const newUser = {
-        name,
-        email,
-        password
-      };
-
-      try {
-        const config = {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        };
-        const body = JSON.stringify(newUser);
-        const res = await axios.post('/api/user/store', body, config);
-        console.log(res.data);
-      } catch (error) {
-        console.error(error.response.data);
-      }
+      register({ name, email, password });
     }
   };
 
@@ -61,7 +44,6 @@ const Register = ({ setAlert }) => {
             name="name"
             value={name}
             onChange={e => onChange(e)}
-            required
           />
         </div>
         <div className="form-group">
@@ -71,7 +53,6 @@ const Register = ({ setAlert }) => {
             name="email"
             value={email}
             onChange={e => onChange(e)}
-            required
           />
           <small className="form-text">
             This site uses Gravatar so if you want a profile image, use a
@@ -83,7 +64,6 @@ const Register = ({ setAlert }) => {
             type="password"
             placeholder="Password"
             name="password"
-            minLength="6"
             value={password}
             onChange={e => onChange(e)}
           />
@@ -93,7 +73,6 @@ const Register = ({ setAlert }) => {
             type="password"
             placeholder="Confirm Password"
             name="password_confirm"
-            minLength="6"
             value={password_confirm}
             onChange={e => onChange(e)}
           />
@@ -108,11 +87,12 @@ const Register = ({ setAlert }) => {
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ setAlert }, dispatch);
+  return bindActionCreators({ setAlert, register }, dispatch);
 };
 
 export default connect(
