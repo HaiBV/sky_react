@@ -1,10 +1,11 @@
 import React, { Fragment, useState } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-import { setAlert } from '../../actions/alert';
+import { setAlert } from '../../actions/alertActions';
 
 const Register = ({ setAlert }) => {
   const [formData, setformData] = useState({
@@ -110,7 +111,11 @@ Register.propTypes = {
   setAlert: PropTypes.func.isRequired
 };
 
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ setAlert }, dispatch);
+};
+
 export default connect(
   null,
-  { setAlert }
+  mapDispatchToProps
 )(Register);

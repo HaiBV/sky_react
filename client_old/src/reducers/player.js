@@ -60,12 +60,10 @@ export const PlayerActions = {
       name
     };
   },
-  removePlayer: index => {
-    return {
-      type: REMOVE_PLAYER,
-      index
-    };
-  },
+  removePlayer: index => ({
+    type: REMOVE_PLAYER,
+    index
+  }),
   selectPlayer: index => {
     return {
       type: SELECT_PLAYER,

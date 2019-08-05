@@ -19,7 +19,7 @@ Alert.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  alerts: state.alert
+  alerts: state.alert.alerts
 });
 
 export default connect(mapStateToProps)(Alert);
