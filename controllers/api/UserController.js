@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const User = require('models/User');
+const Post = require('models/Post');
 
 const UserController = {
   index: (req, res, next) => res.send('User test route'),
@@ -18,7 +19,9 @@ const UserController = {
       let user = await User.findOne({ email });
 
       if (user) {
-        return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
+        return res
+          .status(400)
+          .json({ errors: [{ msg: 'User already exists' }] });
       }
 
       const avatar = gravatar.url(email, {
@@ -45,10 +48,15 @@ const UserController = {
         }
       };
 
-      jwt.sign(payload, config.get('jwtSecret'), { expiresIn: 360000 }, (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      });
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        { expiresIn: 360000 },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -57,7 +65,7 @@ const UserController = {
   delete: async (req, res) => {
     try {
       // Remove user posts
-
+      await Post.deleteMany({ user: req.user.id });
       // Remove profile
       await Profile.findOneAndRemove({ user: req.user.id });
       // Remove user

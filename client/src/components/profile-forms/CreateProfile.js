@@ -48,8 +48,13 @@ const CreateProfile = ({
     e.preventDefault();
     createProfile(formData, history);
   };
+  useEffect(() => {
+    getCurrentProfile();
+  }, [getCurrentProfile]);
 
-  return (
+  return loading && profile === null ? (
+    <Redirect to="/dashboard" />
+  ) : (
     <Fragment>
       <h1 className="large text-primary">Create Your Profile</h1>
       <p className="lead">
