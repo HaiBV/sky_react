@@ -5,7 +5,10 @@ const ProfileController = {
   index: (req, res, next) => res.send('User test route'),
   getAll: async (req, res, next) => {
     try {
-      const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+      const profiles = await Profile.find().populate('user', [
+        'name',
+        'avatar'
+      ]);
       res.json(profiles);
     } catch (err) {
       console.error(err.message);
@@ -14,15 +17,37 @@ const ProfileController = {
   },
   detail: async (req, res, next) => {
     try {
-      const profile = await Profile.findOne({ user: req.user.id }).populate('user', ['name', 'avatar']);
+      const profile = await Profile.findOne({ user: req.user.id }).populate(
+        'user',
+        ['name', 'avatar']
+      );
 
       if (!profile) {
-        return res.status(400).json({ msg: 'There is no profile for this user' });
+        return res
+          .status(400)
+          .json({ msg: 'There is no profile for this user' });
       }
 
       res.json(profile);
     } catch (err) {
       console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  },
+  getProfile: async (req, res) => {
+    try {
+      const profile = await Profile.findOne({
+        user: req.params.user_id
+      }).populate('user', ['name', 'avatar']);
+
+      if (!profile) return res.status(400).json({ msg: 'Profile not found' });
+
+      res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      if (err.kind == 'ObjectId') {
+        return res.status(400).json({ msg: 'Profile not found' });
+      }
       res.status(500).send('Server Error');
     }
   },
@@ -32,7 +57,20 @@ const ProfileController = {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { company, website, location, bio, status, githubusername, skills, youtube, facebook, twitter, instagram, linkedin } = req.body;
+    const {
+      company,
+      website,
+      location,
+      bio,
+      status,
+      githubusername,
+      skills,
+      youtube,
+      facebook,
+      twitter,
+      instagram,
+      linkedin
+    } = req.body;
 
     // Build profile object
     const profileFields = {};
@@ -60,7 +98,11 @@ const ProfileController = {
 
       if (profile) {
         // Update
-        profile = await Profile.findOneAndUpdate({ user: req.user.id }, { $set: profileFields }, { new: true });
+        profile = await Profile.findOneAndUpdate(
+          { user: req.user.id },
+          { $set: profileFields },
+          { new: true }
+        );
 
         return res.json(profile);
       }
@@ -92,7 +134,15 @@ const ProfileController = {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { title, company, location, from, to, current, description } = req.body;
+    const {
+      title,
+      company,
+      location,
+      from,
+      to,
+      current,
+      description
+    } = req.body;
 
     const newExp = {
       title,
@@ -122,7 +172,9 @@ const ProfileController = {
       const profile = await Profile.findOne({ user: req.user.id });
 
       // Get remove index
-      const removeIndex = profile.experience.map(item => item.id).indexOf(req.params.exp_id);
+      const removeIndex = profile.experience
+        .map(item => item.id)
+        .indexOf(req.params.exp_id);
 
       profile.experience.splice(removeIndex, 1);
 
@@ -140,7 +192,15 @@ const ProfileController = {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { school, degree, fieldofstudy, from, to, current, description } = req.body;
+    const {
+      school,
+      degree,
+      fieldofstudy,
+      from,
+      to,
+      current,
+      description
+    } = req.body;
 
     const newEdu = {
       school,
@@ -170,7 +230,9 @@ const ProfileController = {
       const profile = await Profile.findOne({ user: req.user.id });
 
       // Get remove index
-      const removeIndex = profile.education.map(item => item.id).indexOf(req.params.edu_id);
+      const removeIndex = profile.education
+        .map(item => item.id)
+        .indexOf(req.params.edu_id);
 
       profile.education.splice(removeIndex, 1);
 

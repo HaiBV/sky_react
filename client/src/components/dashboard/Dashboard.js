@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
-import Spriner from '../../components/layout/Spriner';
+import Spinner from '../../components/layout/Spinner';
 import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
@@ -20,7 +20,7 @@ const Dashboard = ({
   }, [getCurrentProfile]);
 
   return loading && profile === null ? (
-    <Spriner />
+    <Spinner />
   ) : (
     <Fragment>
       <h1 className="large text-primary">Dashboard</h1>
