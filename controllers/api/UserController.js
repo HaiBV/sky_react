@@ -8,6 +8,7 @@ const Post = require('models/Post');
 
 const UserController = {
   index: (req, res, next) => res.send('User test route'),
+  me: async (req, res, next) => {},
   store: async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

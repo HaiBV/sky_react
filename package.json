@@ -17,6 +17,7 @@
     "debug": "^4.1.1",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
+    "express-acl": "^2.0.8",
     "express-validator": "^6.1.1",
     "gravatar": "^1.8.0",
     "http-errors": "^1.7.3",

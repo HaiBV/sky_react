@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -23,6 +23,12 @@ const UserSchema = new mongoose.Schema({
   }
 });
 
-const User = mongoose.model('user', UserSchema);
+class UserModel {
+  get contact() {
+    return `${this.name} - ${this.email}`;
+  }
+}
 
-module.exports = User;
+UserSchema.loadClass(UserModel);
+
+module.exports = User = mongoose.model("user", UserSchema);
