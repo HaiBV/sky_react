@@ -23,9 +23,9 @@
     "group": "anonymous",
     "permissions": [
       {
-        "resource": "*",
+        "resource": "/api/auth",
         "methods": "*",
-        "action": "deny"
+        "action": "allow"
       }
     ]
   }
