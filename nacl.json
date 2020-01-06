@@ -5,6 +5,16 @@
       {
         "resource": "*",
         "methods": "*",
+        "action": "deny"
+      }
+    ]
+  },
+  {
+    "group": "admin",
+    "permissions": [
+      {
+        "resource": "/api/auth",
+        "methods": ["POST", "GET", "PUT"],
         "action": "allow"
       }
     ]
@@ -20,7 +30,7 @@
     ]
   },
   {
-    "group": "anonymous",
+    "group": "anonymousss",
     "permissions": [
       {
         "resource": "/api/auth",
