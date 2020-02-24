@@ -14,3 +14,10 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: Install and build client
+        run: |
+          npm test
+          npm run install-client
+          npm run build-client
+      - name: Start project
+        run: npm start
