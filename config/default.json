@@ -1,4 +1,0 @@
-{
-  "mongoURI": "mongodb+srv://root:admin123@mern-cdrff.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "mern-react-training"
-}
