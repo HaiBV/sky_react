@@ -5,7 +5,7 @@
 	"scripts": {
 		"build": "",
 		"start": "",
-		"dev": "concurrently \"npm run dev --prefix server\""
+		"dev": "concurrently \"npm run dev --prefix server\" \"npm start --prefix client\""
 	},
 	"devDependencies": {
 		"concurrently": "^8.2.1"
