@@ -1,12 +1,14 @@
+import dotenv from "dotenv";
+dotenv.config();
+if (!process.env.IS_TS_NODE) {
+  require("module-alias/register");
+}
 import express, { Express } from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import http from "http";
-import dotenv from "dotenv";
 import routers from "./routes";
-
-dotenv.config();
 
 const app: Express = express();
 

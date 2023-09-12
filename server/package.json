@@ -5,14 +5,16 @@
 	"scripts": {
 		"build": "npx tsc",
 		"start": "node ./dist/app.js",
-		"dev": "concurrently \"npx tsc --watch\" \"nodemon -q ./dist/app.js\""
+		"dev": "concurrently \"npx tsc --watch\" \"nodemon\""
 	},
 	"dependencies": {
 		"cookie-parser": "~1.4.4",
 		"dotenv": "^16.3.1",
 		"express": "~4.16.1",
 		"http-errors": "~1.6.3",
-		"morgan": "~1.9.1"
+		"module-alias": "^2.2.3",
+		"morgan": "~1.9.1",
+		"ts-node": "^10.9.1"
 	},
 	"devDependencies": {
 		"@types/cookie-parser": "^1.4.4",
@@ -22,5 +24,8 @@
 		"concurrently": "^8.2.1",
 		"nodemon": "^3.0.1",
 		"typescript": "^5.2.2"
+	},
+	"_moduleAliases": {
+		"@app": "./dist"
 	}
 }
