@@ -1,13 +1,13 @@
-import express from "express";
-import usersRouter from "./users";
-
+import { Router } from "express";
+import UserRouter from "./users";
 import AuthController from "@app/controllers/AuthController";
 
-const router = express.Router();
+const router = Router();
+
+const userRouter = new UserRouter();
+router.use("/", userRouter.router);
 
 const authController = new AuthController();
-
-router.use("/users", usersRouter);
 router.use("/auth", authController.index);
 
 export default router;

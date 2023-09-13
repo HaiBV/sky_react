@@ -1,10 +1,18 @@
-import express, { Request, Response } from "express";
+import { Router } from "express";
+import UserController from "@app/controllers/UserController";
+import { Routers } from "@app/interfaces/routers.interface";
+import UserMiddleware from "@app/middlewares/user.middleware";
 
-const router = express.Router();
+export default class UserRouter implements Routers {
+  public path = "/users";
+  public router = Router();
+  public user = new UserController();
 
-/* GET users listing. */
-router.get("/", function (req: Request, res: Response) {
-  res.send("respond with a resource");
-});
+  constructor() {
+    this.initializeRouters();
+  }
 
-export default router;
+  initializeRouters() {
+    this.router.post(`${this.path}/store`, UserMiddleware.create(), this.user.create);
+  }
+}
