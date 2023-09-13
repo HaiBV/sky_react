@@ -3,6 +3,7 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
+		"prepare": "npx ts-patch install -s",
 		"build": "npx tsc",
 		"start": "node ./dist/app.js",
 		"dev": "concurrently \"npx tsc --watch\" \"nodemon -q ./dist/app.js\""
@@ -21,6 +22,9 @@
 		"@types/node": "^20.6.0",
 		"concurrently": "^8.2.1",
 		"nodemon": "^3.0.1",
-		"typescript": "^5.2.2"
+		"ts-patch": "^3.0.2",
+		"tsconfig-paths": "^4.2.0",
+		"typescript": "^5.2.2",
+		"typescript-transform-paths": "^3.4.6"
 	}
 }
