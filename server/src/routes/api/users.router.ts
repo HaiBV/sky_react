@@ -1,12 +1,12 @@
 import { Router } from "express";
-import UserController from "@app/controllers/UserController";
-import { Routers } from "@app/interfaces/routers.interface";
+import { IRouter } from "@app/interfaces/router.interface";
 import UserMiddleware from "@app/middlewares/user.middleware";
+import UserController from "@app/controllers/user.controller";
 
-export default class UserRouter implements Routers {
+export default class UserRouter implements IRouter {
   public path = "/users";
   public router = Router();
-	public user = new UserController();
+  public user = new UserController();
 
   constructor() {
     this.initializeRouters();
