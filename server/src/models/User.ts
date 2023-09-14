@@ -1,14 +1,7 @@
 import { Document, Model, Schema, model } from "mongoose";
+import { IUser } from "@app/interfaces/user.interface";
 
-export interface IUser extends Document{
-  name: string;
-  email: string;
-  password: string;
-  avatar?: string;
-  date?: Date;
-}
-
-const UserSchema = new Schema<IUser>({
+const UserSchema = new Schema<IUser & Document>({
   name: {
     type: String,
     required: true,
@@ -31,6 +24,6 @@ const UserSchema = new Schema<IUser>({
   },
 });
 
-const User: Model<IUser> = model<IUser>('user', UserSchema);
+const User: Model<IUser & Document> = model<IUser & Document>('user', UserSchema);
 
 export default User;

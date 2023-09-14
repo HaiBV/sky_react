@@ -9,8 +9,11 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import http from "http";
 import routers from "./routes";
+import { connectDB } from "./database/connectDB";
 
 const app: Express = express();
+
+connectDB();
 
 app.use(logger("dev"));
 app.use(express.json());
