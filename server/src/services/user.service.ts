@@ -1,6 +1,7 @@
 import { IUser } from "@app/interfaces/user.interface";
 import { hash } from "bcryptjs";
 import UserModal from "@app/models/user.modal";
+import { HttpException } from "@app/exceptions/http.exception";
 
 export default class UserService {
   constructor() {}
@@ -15,7 +16,7 @@ export default class UserService {
     const findUser: IUser | null = await UserModal.findOne({ email: userData.email });
 
     if (findUser) {
-      throw new Error("This email already exists");
+      throw new HttpException(400, "This email already exists");
     }
 
     const hashedPassword = await hash(userData.password, 10);

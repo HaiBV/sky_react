@@ -7,12 +7,14 @@ import { IUser } from "@app/interfaces/user.interface";
 export default class UserController {
   constructor() {}
 
-  async getUsers(req: Request, res: Response) {
+  async getUsers(req: Request, res: Response, next: NextFunction) {
     try {
       const users = await userService.getAllUser();
 
       res.status(200).json({ data: users, message: "findAll" });
-    } catch (error) {}
+    } catch (error) {
+      next(error);
+    }
   }
 
   async create(req: Request, res: Response, next: NextFunction) {
