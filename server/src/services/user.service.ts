@@ -1,26 +1,31 @@
-import { IUser } from "@app/interfaces/user.interface";
 import { hash } from "bcryptjs";
+import { Service } from "typedi";
+import { IUser } from "@app/interfaces/user.interface";
 import UserModal from "@app/models/user.modal";
 import { HttpException } from "@app/exceptions/http.exception";
 
+@Service()
 export default class UserService {
-  constructor() {}
+  userModal: typeof UserModal;
+  constructor() {
+    this.userModal = UserModal;
+  }
 
   public async getAllUser(): Promise<Array<IUser>> {
-    const users: Array<IUser> = await UserModal.find();
+    const users: Array<IUser> = await this.userModal.find();
 
     return users;
   }
 
   public async createUser(userData: IUser): Promise<IUser> {
-    const findUser: IUser | null = await UserModal.findOne({ email: userData.email });
+    const findUser: IUser | null = await this.userModal.findOne({ email: userData.email });
 
     if (findUser) {
       throw new HttpException(400, "This email already exists");
     }
 
     const hashedPassword = await hash(userData.password, 10);
-    const createdUserData: IUser = await UserModal.create({ ...userData, password: hashedPassword });
+    const createdUserData: IUser = await this.userModal.create({ ...userData, password: hashedPassword });
 
     return createdUserData;
   }
