@@ -1,18 +1,17 @@
 import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
 import { injectable } from "tsyringe";
+import jwt from "jsonwebtoken";
 import { IUser } from "@app/interfaces/user.interface";
 import UserService from "@app/services/user.service";
+import { autobind } from "@app/decorators/autobind";
 
 @injectable()
 export default class UserController {
-  public userService: UserService;
+  constructor(public userService: UserService) {}
 
-  constructor(userService: UserService) {
-    this.userService = userService;
-  }
-
-  public getUsers = async (req: Request, res: Response, next: NextFunction) => {
+  @autobind
+  public async getUsers(req: Request, res: Response, next: NextFunction) {
     try {
       const users = await this.userService.getAllUser();
 
@@ -20,9 +19,10 @@ export default class UserController {
     } catch (error) {
       next(error);
     }
-  };
+  }
 
-  public create = async (req: Request, res: Response, next: NextFunction) => {
+  @autobind
+  public async create(req: Request, res: Response, next: NextFunction) {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -31,9 +31,16 @@ export default class UserController {
       const userData: IUser = req.body;
       const createdUserData: IUser = await this.userService.createUser(userData);
 
-      res.status(201).json({ data: createdUserData, message: "created" });
+      const payload = {
+        user: {
+          id: createdUserData.id,
+        },
+      };
+
+      const token = jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: 36000 });
+      res.status(201).json({ token });
     } catch (error) {
       next(error);
     }
-  };
+  }
 }
