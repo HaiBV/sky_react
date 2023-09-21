@@ -21,6 +21,12 @@ export default class UserService {
     return user;
   };
 
+  public getUserByEmail = async (email: string): Promise<IUser | null> => {
+    const user: IUser | null = await this.userModel.findOne({ email });
+
+    return user;
+  };
+
   public createUser = async (userData: IUser): Promise<IUser> => {
     const findUser: IUser | null = await this.userModel.findOne({ email: userData.email });
 

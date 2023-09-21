@@ -15,6 +15,7 @@ export default class UserRouter implements IRouter {
   }
 
   initializeRouters() {
-    this.router.get(`${this.path}`, AuthMiddleware, this.controller.index);
+    this.router.get(`${this.path}`, AuthMiddleware.auth, this.controller.index);
+    this.router.post(`${this.path}`, AuthMiddleware.login(), this.controller.login);
   }
 }
