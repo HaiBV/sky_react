@@ -1,14 +1,16 @@
 import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
 import { injectable } from "tsyringe";
-import jwt from "jsonwebtoken";
-import { IUser } from "@app/interfaces/user.interface";
-import UserService from "@app/services/user.service";
+
 import { autobind } from "@app/decorators/autobind";
+import { IUser } from "@app/interfaces/user.interface";
+
+import UserService from "@app/services/user.service";
+import AuthService from "@app/services/auth.service";
 
 @injectable()
 export default class UserController {
-  constructor(public userService: UserService) {}
+  constructor(public userService: UserService, public authService: AuthService) {}
 
   @autobind
   public async getUsers(req: Request, res: Response, next: NextFunction) {
@@ -31,13 +33,7 @@ export default class UserController {
       const userData: IUser = req.body;
       const createdUserData: IUser = await this.userService.createUser(userData);
 
-      const payload = {
-        user: {
-          id: createdUserData.id,
-        },
-      };
-
-      const token = jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: 36000 });
+      const token = this.authService.generateToken(createdUserData);
       res.status(201).json({ token });
     } catch (error) {
       next(error);
