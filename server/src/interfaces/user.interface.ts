@@ -10,5 +10,5 @@ export interface IUser extends Document {
 }
 
 export interface IUserJwtPayload extends JwtPayload {
-  user?: Pick<IUser, "id">;
+  user: Pick<IUser, "id">;
 }
