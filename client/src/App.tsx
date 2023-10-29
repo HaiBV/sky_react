@@ -1,13 +1,33 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./style.css";
 
-import Navbar from "./components/layout/Navbar";
-import Landing from "./components/layout/Landing";
+import Root from "components/layout/Root";
+import Landing from "components/layout/Landing";
+import Login from "components/Login";
+import Register from "components/Register";
 
-const App = () => (
-  <div className="App">
-    <Navbar />
-    <Landing />
-  </div>
-);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <>Not found</>,
+    children: [
+      {
+        path: "/",
+        element: <Landing />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+    ],
+  },
+]);
+
+const App = () => <RouterProvider router={router} />;
 
 export default App;
