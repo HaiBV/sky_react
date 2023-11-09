@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useAppSelector } from "store";
 
 const Landing = () => {
+  const { isAuthenticated } = useAppSelector((store) => store.auth);
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" />;
+  }
+
   return (
     <section className="landing">
       <div className="dark-overlay">

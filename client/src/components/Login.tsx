@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   if (isAuthenticated) {
-    return <Navigate to="/" replace={true} />;
+    return <Navigate to="/dashboard" replace={true} />;
   }
 
   return (
