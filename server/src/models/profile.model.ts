@@ -5,6 +5,7 @@ const ProfileSchema = new Schema<IProfile>({
   user: {
     type: Schema.Types.ObjectId,
     ref: "user",
+		required: true,
   },
   company: String,
   website: String,

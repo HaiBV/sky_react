@@ -16,8 +16,8 @@ export default class AuthService {
     return profile;
   }
 
-  async createOfUpdateProfile(profile: {
-    user: string;
+  async createOfUpdateProfile(profileData: {
+    userId: string;
     company: string;
     website: string;
     location: string;
@@ -25,14 +25,35 @@ export default class AuthService {
     skills: string;
     bio: string;
   }) {
-    const { user, company, website, location, status, skills, bio } = profile;
+    const { userId, company, website, location, status, skills, bio } = profileData;
 
-    // const profileFields: IProfile = {
-    //   user: new Types.ObjectId(profile.user),
-    //   status: profile.status,
-    //   skills: profile.skills.split(','),
-    // };
+    const profile = await this.profileModel.findOne({ user: userId });
 
-		return false
+		if (profile) {
+			profile.company = company;
+      profile.website = website;
+      profile.location = location;
+      profile.status = status;
+      profile.skills = skills.split(",");
+      profile.bio = bio;
+
+      await profile.save();
+
+			return profile;
+		}
+
+    const profileFields: IProfile = {
+      user: new Types.ObjectId(userId),
+      status: status,
+      skills: skills.split(","),
+      bio: bio,
+      company: company,
+      website: website,
+      location: location,
+    };
+
+		const newProfile = this.profileModel.create(profileFields);
+
+		return newProfile;
   }
 }

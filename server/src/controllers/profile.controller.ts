@@ -44,7 +44,7 @@ export default class ProfileController {
       const { company, website, location, status, skills, bio } = req.body;
 
       const profile = await this.profileService.createOfUpdateProfile({
-				user: req.user.id,
+				userId: req.user.id,
         company,
         website,
         location,

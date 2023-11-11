@@ -2,6 +2,7 @@ import { Model, Schema, model } from "mongoose";
 import { IUser } from "@app/interfaces/user.interface";
 
 const UserSchema = new Schema<IUser>({
+	_id: Schema.Types.ObjectId,
   name: {
     type: String,
     required: true,

@@ -1,7 +1,9 @@
-import { Document } from "mongoose";
+import { Document, ObjectId } from "mongoose";
 import { JwtPayload } from "jsonwebtoken";
 
 export interface IUser extends Document {
+  _id: ObjectId;
+  id: ObjectId;
   name: string;
   email: string;
   password: string;

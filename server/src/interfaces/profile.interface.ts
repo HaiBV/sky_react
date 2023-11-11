@@ -10,7 +10,7 @@ export interface IExperience {
   description?: String;
 }
 
-export interface IProfile extends Document {
+export interface IProfile {
   user: Types.ObjectId;
   company?: String;
   website?: String;
@@ -18,5 +18,5 @@ export interface IProfile extends Document {
   status: String;
   skills: Array<String>;
   bio?: String;
-  experience: Array<IExperience>;
+  experience?: Array<IExperience>;
 }

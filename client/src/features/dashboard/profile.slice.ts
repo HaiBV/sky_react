@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getProfile = createAsyncThunk<any>("profile/getProfile", async () => {
-  const response = await axios.post("/api/users/store", {});
+  const response = await axios.post("/api/profile/me");
   return response.data;
 });
 
@@ -17,7 +17,7 @@ export const profileSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(getProfile.fulfilled, (stat, action) => {});
+    builder.addCase(getProfile.fulfilled, (state, action) => {});
   },
 });
 
