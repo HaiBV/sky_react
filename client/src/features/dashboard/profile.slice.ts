@@ -1,26 +1,35 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getProfile = createAsyncThunk<any>("profile/getProfile", async () => {
-  const response = await axios.post("/api/profile/me");
+export const getCurrentProfile = createAsyncThunk<any>("profile/getCurrentProfile", async () => {
+  // TODO: change to use appRequestService instead of axios
+  // TODO: what if we using fetch instead? remove dependency
+  const response = await axios.get("/api/profile/me");
   return response.data;
 });
 
 export const profileSlice = createSlice({
   name: "profile",
-  initialState: 0,
-  reducers: {
-    increment: (state) => state + 1,
-    decrement: (state) => state - 1,
-    incrementByAmount: (state, action) => {
-      state += action.payload;
-    },
+  initialState: {
+    profile: null,
+    loading: false,
   },
+  reducers: {},
   extraReducers(builder) {
-    builder.addCase(getProfile.fulfilled, (state, action) => {});
+    builder.addCase(getCurrentProfile.fulfilled, (state, action) => {
+      state.loading = false;
+      state.profile = action.payload.profile;
+    });
+    builder.addCase(getCurrentProfile.rejected, (state) => {
+      state.loading = false;
+      state.profile = null;
+    });
+    builder.addMatcher(isAnyOf(getCurrentProfile.pending), (state) => {
+      state.loading = true;
+    });
   },
 });
 
-export const { increment, decrement, incrementByAmount } = profileSlice.actions;
+// export const { increment, decrement, incrementByAmount } = profileSlice.actions;
 
 export default profileSlice.reducer;

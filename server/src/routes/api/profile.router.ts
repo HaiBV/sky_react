@@ -17,5 +17,6 @@ export default class ProfileRouter implements IRouter {
   initializeRouters() {
     this.router.get(`${this.path}/me`, AuthMiddleware.auth, this.controller.getProfile);
     this.router.post(`${this.path}/`, [AuthMiddleware.auth, ...ProfileMiddleware.create()], this.controller.createOrUpdateProfile);
+    this.router.post(`${this.path}/experience`, [AuthMiddleware.auth, ...ProfileMiddleware.updateExperience()], this.controller.createOrUpdateProfile);
   }
 }

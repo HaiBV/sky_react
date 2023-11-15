@@ -13,6 +13,7 @@ import PrivatedRoutes from "routers/PrivatedRoutes";
 import { loadUser } from "features/auth/auth.slice";
 import { setAuthToken } from "utils/requestConfig";
 import Dashboard from "features/dashboard/Dashboard";
+import CreateProfile from "features/dashboard/CreateProfile";
 
 // TODO: try another way to manager router (<Router />)
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
           {
             path: "/dashboard",
             element: <Dashboard />,
+          },
+          {
+            path: "/create-profile",
+            element: <CreateProfile />,
           },
         ],
       },

@@ -3,10 +3,18 @@ import { useAppSelector } from "store";
 
 // TODO: move to appropriate folder
 const PrivatedRoutes = () => {
-  const { isAuthenticated } = useAppSelector((store) => store.auth);
+  const { isAuthenticated, loading, user } = useAppSelector((store) => store.auth);
 
   // TODO: redirect to login and keep previous page to redirect back after login success
-  return isAuthenticated ? <Outlet /> : <Navigate to={"/login"} />;
+  if (!isAuthenticated) {
+    return <Navigate to={"/login"} />;
+  }
+
+  if (loading || user === null) {
+    return <>Loading...</>;
+  }
+
+  return <Outlet />;
 };
 
 export default PrivatedRoutes;

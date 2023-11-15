@@ -21,13 +21,13 @@ export default class ProfileController {
   @autobind
   public async getProfile(req: Request, res: Response, next: NextFunction) {
     try {
-      const profile = await this.profileService.getProfile(req.user.id);
+			const profile = await this.profileService.getProfile(req.user.id);
 
       if (!profile) {
-        return res.status(400).json({ msg: "There is no profile for this user" });
+				return res.status(400).json({ msg: "There is no profile for this user" });
       }
 
-      res.status(200).json({ data: profile, message: "findAll" });
+      res.status(200).json({ profile });
     } catch (error) {
       next(error);
     }
@@ -44,7 +44,7 @@ export default class ProfileController {
       const { company, website, location, status, skills, bio } = req.body;
 
       const profile = await this.profileService.createOfUpdateProfile({
-				userId: req.user.id,
+        userId: req.user.id,
         company,
         website,
         location,
@@ -57,7 +57,31 @@ export default class ProfileController {
         return res.status(400).json({ msg: "There is no profile for this user" });
       }
 
-      res.status(200).json({ data: profile, message: "findAll" });
+      res.status(200).json({ profile });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  @autobind
+  public async updateExperience(req: Request, res: Response, next: NextFunction) {
+    // TODO: try catch seem useless, is there another way to catch exception error?
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+
+      // TODO: seem like an idiot way to pass params to service
+      const profile = await this.profileService.updateExperience(req.user.id, {
+        title: req.body.title,
+        company: req.body.company,
+        location: req.body.location,
+        from: req.body.from,
+        to: req.body.to,
+        current: req.body.current,
+        description: req.body.description,
+      });
     } catch (error) {
       next(error);
     }

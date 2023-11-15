@@ -5,7 +5,6 @@ const ProfileSchema = new Schema<IProfile>({
   user: {
     type: Schema.Types.ObjectId,
     ref: "user",
-		required: true,
   },
   company: String,
   website: String,
@@ -37,11 +36,48 @@ const ProfileSchema = new Schema<IProfile>({
       to: Date,
       current: {
         type: Boolean,
-        defautl: false,
+        default: false,
       },
       description: String,
     },
   ],
+  education: [
+    {
+      school: {
+        type: String,
+        required: true,
+      },
+      degree: {
+        type: String,
+        required: true,
+      },
+      fieldofstudy: {
+        type: String,
+        required: true,
+      },
+      from: {
+        type: Date,
+        required: true,
+      },
+      to: Date,
+      current: {
+        type: Boolean,
+        default: false,
+      },
+      description: String,
+    },
+  ],
+  social: {
+    youtube: String,
+    twitter: String,
+    facebook: String,
+    linkedin: String,
+    instagram: String,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const ProfileModel: Model<IProfile> = model<IProfile>("profile", ProfileSchema);
